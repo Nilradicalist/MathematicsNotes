@@ -1,3 +1,127 @@
+## Table of Contents
+
+```text
+analysis/
+└── 03-limits.md/
+    ├── 03.1-concetti-base.md (基础概念)
+    │   ├── Punti di accumulazione (聚点)[cite: 2]
+    │   ├── Definizione generale di limite (极限的一般定义)[cite: 2]
+    │   ├── Teorema di unicità del limite (极限唯一性定理)[cite: 2]
+    │   └── Non esistenza del limite: sin(1/x) (极限不存在的反例)[cite: 2]
+    ├── 03.2-teoremi-fondamentali.md (核心定理)
+    │   ├── Teorema della permanenza del segno (保号性定理)[cite: 2]
+    │   ├── Teorema del confronto / due carabinieri (夹逼定理)[cite: 2]
+    │   └── Operazioni sui limiti (极限的四则运算)[cite: 2]
+    ├── 03.3-infiniti-e-infinitesimi.md (无穷大与无穷小)
+    │   ├── Confronto e principio di sostituzione (比较与替换原则)[cite: 2]
+    │   ├── Limiti notevoli e numero di Nepero (重要极限与自然对数底)[cite: 2]
+    │   └── Gerarchia degli infiniti (无穷大阶的比较)[cite: 2]
+    └── 03.4-strumenti-avanzati.md (计算工具)
+        ├── Caratterizzazione sequenziale dei limiti (极限的数列特征)[cite: 2]
+        ├── Teorema di de l'Hôpital (洛必达法则)[cite: 2]
+        └── Formula di Taylor per i limiti (用泰勒展开求极限)[cite: 2]
+
+```
+
+### 01-definizioni-e-fondamenti.md (定义与基础)
+
+* **聚点 (Punti di accumulazione)** 在实数轴和扩展实数轴上的定义。
+
+
+* 极限的一般定义，包括有限到有限的极限 **(limite finito al finito)**。
+
+
+* **右极限 (limite destro)**、**左极限 (limite sinistro)** 以及极限存在的判定准则。
+
+
+* 极限不存在的情况证明，例如符号函数和 $\sin(1/x)$ 在 0 处的行为。
+
+
+
+### 02-teoremi-sui-limiti.md (极限定理)
+
+* 极限的唯一性定理 **(Teorema di unicità del limite)** 及其证明。
+
+
+* 保号性定理 **(Teorema della permanenza del segno)** 及其证明。
+
+
+* 具有有限极限的函数的局部有界性 **(Locale limitatezza di funzioni con limite finito)**。
+
+
+* 夹逼定理 / 比较定理 **(Teorema del confronto)**，包括其在无穷极限上的推广及证明。
+
+
+* 有限极限的四则运算 **(Operazioni sui limiti finiti)** 及其证明。
+
+
+* 单调函数的极限 **(Limiti di funzioni monotone)** 及其证明。
+
+
+
+### 03-calcolo-dei-limiti-e-forme-indeterminate.md (极限计算与不定式)
+
+* 无穷的部分算术化与不定式 **(Aritmetizzazione parziale di infinito e forme indeterminate)**。
+
+
+* 分母为零时的比值极限计算，特别是分子收敛于非零有限值的情况以及有理函数 **(funzioni razionali)** 的极限。
+
+
+* 极限中的变量代换 **(Cambiamento di variabili nei limiti)** 及其证明。
+
+
+* 重要极限的应用，例如 $\sin(x)$、$\cos(x)$ 在 0 处的极限，以及 $\frac{\sin(x)}{x}$ 和 $\frac{1-\cos(x)}{x^2}$ 在 0 处的极限。
+
+
+* 无穷小与无穷大 **(Infinitesimi e infiniti)** 的比较与阶层 **(Gerarchia degli infiniti)**。
+
+
+* 无穷小与无穷大的等价替换原则 **(Principio di sostituzione degli infinitesimi/infiniti)**。
+
+
+* 有理函数在无穷远处的极限 **(Limiti all'infinito di funzioni razionali)**。
+
+
+* 包含指数函数和对数函数的极限计算 **(Limiti con esponenziali e logaritmi)**。
+
+
+
+### 04-limiti-di-successioni.md (数列极限)
+
+* 数值数列 **(Successioni numeriche)** 的收敛与发散 **(convergenti o divergenti)**。
+
+
+* 极限的序列特征 **(Caratterizzazione sequenziale dei limiti)** 及其在证明极限不存在时的应用。
+
+
+* 单调数列的极限 **(Limite di successioni monotone)**。
+
+
+* 自然对数的底数，即纳皮尔数 **(Il numero di Nepero)**。
+
+
+* 收敛数列的有界性 **(Limitatezza delle successioni convergenti)** 及其证明。
+
+
+
+### 05-strumenti-avanzati.md (进阶计算工具：洛必达与泰勒)
+
+* 导数的极限定理 **(Teorema sui limiti di derivate)** 及其证明。
+
+
+* 渐近线 **(Asintoti)**：垂直、水平和斜渐近线的求解。
+
+
+* 洛必达法则 **(Teorema di de l'Hôpital)**，教授特别要求掌握“有限到有限”情况下的证明。
+
+
+* 带有皮亚诺余项的泰勒公式 **(Formula di Taylor con resto di Peano)** 及其证明。
+
+
+* 利用多项式近似计算极限 **(Calcolo dei limiti con l'approssimazione polinomiale)** 与无穷小的代数运算 **(Algebra degli infinitesimi)**。
+
+---
+
 ## 1.4 左右极限 (Limiti Destro e Sinistro)
 
 ### 严谨数学定义 (Definizione Rigorosa)

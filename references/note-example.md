@@ -1,10 +1,19 @@
-# Maturity : seed
+# Knowledge Proficiency
 
+* Beginner ()
+* Understanding ()
+* Intermediate ()
+* Mastery ()
 
-# Definition （它是什么？）
+---
 
+# Definition (What is it?)
 
-# Intuition （为什么需要它？）
+- Logical chain/Logical flow
+
+---
+
+# Intuition (Why is it needed?)
 
 - observe
 
@@ -12,7 +21,11 @@
 
 - counterexamples
 
-# Results （最重要的事实和结论有哪些？）
+---
+
+# Results (What are the most important facts and results?)
+
+- The Idea Behind the Demonstration (Idea della Dimostrazione)
 
 - property
 
@@ -22,11 +35,17 @@
 
 - corollary
 
-# Connections （它和哪些知识相连接？）
+- other propositions
+
+---
+
+# Connections (How does it connect with other concepts?)
 
 
 
-# Exercises （是否真正学会应用？）
+---
+
+# Exercises (Have I genuinely learnt how to apply it?)
 
 - classic ex
 
