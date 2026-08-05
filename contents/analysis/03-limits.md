@@ -450,3 +450,560 @@ $$= \lim_{t \to 0} \left( \frac{\sin t}{t} \cdot \frac{1}{t+2} \right)$$
 所以最终结果为 $1 \cdot \frac{1}{2} = \frac{1}{2}$。
 
 现在，从底层的 C 语言思维（$\varepsilon-\delta$）跳到调用成熟 API（Limiti Notevoli 和核心定理）去解题，你觉得这种抽象层级的提升，会让你的直觉在面对罗马大学那些“令人发指”的代数计算时更轻松一些吗？
+
+
+
+# Knowledge Proficiency
+
+* Beginner ()
+* Understanding ()
+* Intermediate ()
+* Mastery ()
+
+---
+
+# Definition (What is it?)
+
+Definition: $\forall \varepsilon>0 \quad \exists \delta>0 \quad \forall x\in \mathbb{R}$, 
+
+## Logical chain/Logical flow
+
+证明思路和Logic Chain：
+
+情况1: $x\to x_0$
+
+寻找阶段：
+
+先观察 $|f(x)-\ell|<\varepsilon$ ，在草稿纸上通过代数方法变形或者估计，一般会得出为一个 $|x-x_0|<H(\varepsilon)$ 的不等式，利用这个不等式寻找一个关于*输入距离*的**充分条件**，即 $$|x-x_0|<H(\varepsilon) \implies |f(x)-\ell|<\varepsilon$$
+有时不那么直观，还需要引入辅助变量 $0<\delta\le r$ 进行局部控制， 利用 $0<|x-x_0|<\delta \implies 0<|x-x_0|<r$ .
+
+然后根据前面推测的 $x$ 和 $\varepsilon$ 的关系再次推测在 $0<|x-x_0|<\delta$ 中，$\delta$ 的取值要怎样才能让 $x$ 符合 $|f(x)-\ell|<\varepsilon$ . 
+
+然后合并所有限制条件，选定一个 $\delta=\operatorname{min}\{r, H(\varepsilon), \dots\}$ .
+
+证明阶段：
+
+由于我们已经选定了 $\delta=\operatorname{min}\{r, H(\varepsilon), \dots\}$ 或者其它视情况而定的 $\delta= \dots$
+
+这个时候任取满足条件的 $x\in A$ ,
+
+使用假设的不等式 $0<|x-x_0|<\delta$ ， 展开这个不等式推测 $\delta$ 的具体选择，尝试 $\implies$ $|f(x)-\ell|<\varepsilon$
+
+如果能够正向推出结论（输出误差），那么调用极限的定义，得证。
+
+情况2:$x\to \pm\infty$
+
+寻找阶段：
+
+先观察 $|f(x)-\ell|<\varepsilon$ ，在草稿纸上通过代数方法变形或者估计，一般会得出为一个  $x<G(\varepsilon)$ 或者 $x>G(\varepsilon)$ 的不等式，利用这个不等式寻找一个关于*输入尾部的所在位置*的**充分条件**，即
+$$\begin{aligned}
+x\to +\infty: \quad x>G(\varepsilon) \implies |f(x)-\ell|<\varepsilon \\
+x\to -\infty: \quad x<G(\varepsilon) \implies |f(x)-\ell|<\varepsilon
+\end{aligned}
+$$
+解这个不等式，推测 $x$ 和 $\varepsilon$ 的关系。
+
+然后根据前面推测的 $x$ 和 $\varepsilon$ 的关系再次推测在 $x>K$ 或者 $x<K$ 中，$K$ 的取值要怎样才能让 $x$ 符合 $|f(x)-\ell|<\varepsilon$ . 
+
+有的时候可能推测有多个候选值：
+
+$x\to +\infty, \quad x>G_{1}(\varepsilon), \quad x>G_{2}(\varepsilon)$
+
+$x\to -\infty, \quad x<G_{1}(\varepsilon), \quad x<G_{2}(\varepsilon)$
+
+选定一个 $K=\operatorname{max}\{G_{1}(\varepsilon), G_{2}(\varepsilon), \dots\}$
+
+或者 $K=\operatorname{min}\{G_{1}(\varepsilon), G_{2}(\varepsilon), \dots\}$
+
+证明阶段：
+
+由于我们已经选定了 $K=\operatorname{max}\{G_{1}(\varepsilon), G_{2}(\varepsilon), \dots\}$
+
+或者 $K=\operatorname{min}\{G_{1}(\varepsilon), G_{2}(\varepsilon), \dots\}$
+
+这个时候任取满足条件的 $x\in A$ , 
+
+得到
+$$\begin{aligned}
+x>K=\operatorname{max}\{G_{1}(\varepsilon), G_{2}(\varepsilon), \dots\}
+\implies
+|f(x)-\ell|<\varepsilon \\
+x<K=\operatorname{min}\{G_{1}(\varepsilon), G_{2}(\varepsilon), \dots\}
+\implies
+|f(x)-\ell|<\varepsilon
+\end{aligned}
+$$
+
+如果能够正向推出结论，那么根据极限的定义，得证。
+
+
+---
+
+# Intuition (Why is it needed?)
+
+- observe
+
+- examples
+
+- counterexamples
+
+---
+
+# Results (What are the most important facts and results?)
+
+## The Idea Behind the Demonstration (Idea della Dimostrazione)
+
+How to use definition to proof limits?
+
+### 对你八个步骤的逐项修正
+
+#### 1. 识别固定数据
+
+基本正确。还应补充前提：
+
+\[\
+x\_0\in\operatorname{Acc}(A).\
+]
+
+预先固定的是：
+
+\[\
+f,\quad A,\quad x\_0,\quad \ell.\
+]
+
+其中 (\ell) 是题目要求我们验证的候选极限值，不是已经证明的极限。
+
+#### 2. 任取 (\varepsilon>0)
+
+正确。必须明确：
+
+\[\
+\text{Sia }\varepsilon>0\text{ arbitrario}.\
+]
+
+然后研究目标误差：
+
+\[\
+|f(x)-\ell|.\
+]
+
+#### 3. 逆向分析目标
+
+你的思想正确，但表述需要改成：
+
+> 对 (|f(x)-\ell|) 进行代数变形或估计，寻找一个关于 (|x-x\_0|) 的**充分条件**，使目标不等式成立。
+
+这不一定只能写在草稿纸上。只要使用条件性语言，完全可以严谨地写在答卷上：
+
+> Per ottenere\
+> \[\
+> |f(x)-\ell|<\varepsilon,\
+> ]\
+> è sufficiente richiedere che…
+
+不能写成无条件事实：
+
+\[\
+|f(x)-\ell|<\varepsilon,\
+]
+
+但可以把它明确标记为**目标**。
+
+另外，“大概得出”不够准确。数学上应当是：
+
+* 得到等价条件；或
+
+* 得到充分条件；或
+
+* 得到一个上界估计。
+
+#### 4. 区分发现过程和正式验证
+
+你写的第 4 步目前不完整。不是简单写：
+
+\[\
+\Longrightarrow |f(x)-\ell|<\varepsilon.\
+]
+
+而应当先完成构造，再重新从定义的左侧开始：
+
+\[\
+0<|x-x\_0|<\delta\
+\Longrightarrow\
+|f(x)-\ell|<\varepsilon.\
+]
+
+#### 5. 选择 (\delta)
+
+正确，但需补充：
+
+\[\
+\delta=\delta(\varepsilon)>0.\
+]
+
+(\delta) 可以依赖：
+
+* (\varepsilon)；
+
+* 已经固定的 (f,A,x\_0,\ell)；
+
+* 证明中预先选定的常数。
+
+但不能依赖随后任取的 (x)。
+
+有多个限制时，通常使用：
+
+\[\
+\delta=\min{\delta\_1,\delta\_2,\ldots}.\
+]
+
+#### 6. 任取满足条件的 (x)
+
+“代入 (0<|x-x\_0|<\delta)”不够准确。应该写：
+
+> 在选择 (\delta) 之后，任取 (x\in A)，并假设\
+> \[\
+> 0<|x-x\_0|<\delta.\
+> ]
+
+即：
+
+\[\
+\forall x\in A\
+]
+
+并不是说任意实数都满足这个距离条件，而是说：
+
+\[\
+\text{对所有满足该条件的 }x\in A\
+]
+
+都要证明输出误差小于 (\varepsilon)。
+
+#### 7. 正向推出目标
+
+正确：
+
+\[\
+0<|x-x\_0|<\delta\
+\Longrightarrow\
+|f(x)-\ell|<\varepsilon.\
+]
+
+每一步不等式都应注明依据：
+
+* 使用了哪个代数恒等式；
+
+* 使用了哪个局部估计；
+
+* 使用了 (|x-x\_0|<\delta)；
+
+* 使用了 (\delta) 的具体选择。
+
+#### 8. 调用定义
+
+正确。量词要求全部满足以后，才能写：
+
+\[\
+\lim\_{x\to x\_0}f(x)=\ell.\
+]
+
+***
+
+## 修正后的完整逻辑链
+
+### A. 寻找构造：Ricerca di (\delta)
+
+1. 识别固定对象 $f,A,x_0,\ell$ ，并确认 $x_0$ 是 $A$ 的聚点。
+
+2. 任取 $\varepsilon>0$
+
+3. 把 $|f(x)-\ell|$ 改写或估计为含有 $|x-x_0|$ 的表达式：Per ottenere $|f(x)-\ell|<\varepsilon$ è sufficiente richiedere che...
+
+4. 寻找一个充分条件：$|x-x_0|<g(\varepsilon)\Longrightarrow|f(x)-\ell|<\varepsilon$ .
+
+5. 若还需要控制其他因子，增加局部限制，并把所有限制合并为$\delta=\min\{\delta_1,\ldots,g(\varepsilon)\}>0$ .
+
+### B. 正式证明：Verifica
+
+6. 任取 $x\in A$ ，满足 $0<|x-x_0|<\delta$ .
+
+7. 利用这个假设以及 $\delta$ 的选择，正向证明 $|f(x)-\ell|<\varepsilon$ .
+
+8. 因为这对任意 $\varepsilon>0$ 都成立，所以根据定义：$\lim\_{x\to x\_0}f(x)=\ell$ .
+
+这条逻辑链现在是严密的。
+
+***
+
+# 二、复习任务进度核对
+
+## `02-intorno` 的通过条件
+
+**已经达成。**
+
+你完成了：
+
+* 四类邻域；
+
+* 聚点定义和精确否定；
+
+* 量词与变量依赖；
+
+* (\operatorname{Acc}((1,2))=\[1,2]) 的完整证明；
+
+* 意大利语定义压缩。
+
+虽然完整证明经过多次修正，但按照原定停止规则，已经足够结束 `02-intorno`，进入 `[[03-limits]]`。
+
+## 是否完成全部 8 月 3 日任务
+
+**没有。**
+
+计划没有把 8 月 3 日和 8 月 4 日分别规定成两个完全独立的章节，而是把 **8 月 2 日至 6 日**作为“极限与数列”阶段，把 **8 月 3 日至 6 日**统一写为“极限与数列”。阶段范围还包括：
+
+* 有限点处有限极限；
+
+* 广义极限；
+
+* 单侧极限；
+
+* 极限唯一性、保号性、比较定理；
+
+* 四则运算和基本极限；
+
+* 变量替换；
+
+* 无穷小与无穷大的比较；
+
+* 数列及单调数列。
+
+目前只完成了这一阶段的入口：
+
+* 有限极限的定义；
+
+* 量词顺序；
+
+* 一个线性函数的直接验证；
+
+* (\delta) 构造法的初步理解。
+
+因此不能说“8 月 3 日的全部任务已完成”。计划还要求 8 月 3 日至 9 日每天安排约 120 分钟核心知识、90 分钟独立题与批改，以及30分钟 A1 回忆；当前对话也无法确认你的实际净学习时间。
+
+## 能否开始 8 月 4 日任务
+
+今天已经是 **2026 年 8 月 4 日**，但这里不需要机械地把内容分成“补 8 月 3 日”和“开始 8 月 4 日”。
+
+正确处理是：
+
+> 继续执行 8 月 3—6 日的同一个“极限与数列”阶段，从当前断点继续。
+
+所以结论是：
+
+* `intorno`：通过，可以结束；
+
+* `limits`：已经开始；
+
+* 第一阶段：尚未完成；
+
+* 当前继续 limits，不回到邻域反复训练，也不提前跳到连续性。
+
+***
+
+# 三、教授讲义中的练习是否足够
+
+## 1. 代表性
+
+教授自己的教材和讲义具有很高的**教学代表性**，因为它们反映：
+
+* 定义和记号；
+
+* 定理顺序；
+
+* 教授期望掌握的前置关系；
+
+* 从基础例题到章节练习的递进方式。
+
+课程日志显示，在讲授聚点与有限极限后，教授立即布置了 Esercizio 3.1–3.2，说明这些题主要承担“定义入口训练”的作用。
+
+教材第 3 章的练习从聚点、定义验证，逐步覆盖基本极限、变量替换、运算法则、比较定理、不存在性和数列等内容，范围是比较完整的。
+
+## 2. 数量是否足够
+
+需要区分两个目标。
+
+### 对理解课程结构：基本足够
+
+教授教材足以帮助你：
+
+* 学习正式定义；
+
+* 理解定理用途；
+
+* 完成每类题的初次训练；
+
+* 保持与课程记号一致。
+
+### 对考试熟练度：单独使用不够
+
+例如，教材 Esercizio 3.2 中直接使用定义验证极限的题只有两个基础模型：
+
+\[\
+\lim\_{x\to-1}(9-2x)=11,\
+\qquad\
+\lim\_{x\to2}(x^2+4)=8.\
+]
+
+它们足以介绍构造方法，但不足以让你仅靠这两题稳定掌握所有 (\varepsilon)-(\delta) 构造。
+
+另一方面，正式试卷中的极限通常表现为计算题、含参数题或与 Taylor、连续性、反常积分相连的题，而不是大量要求从定义证明简单极限。
+
+因此资源优先级应当是：
+
+\[\
+\boxed{\
+\text{本教授教材}\
+\rightarrow\
+\text{本教授正式试卷}\
+\rightarrow\
+\text{其他教授的补充题}\
+}\
+]
+
+
+当前的下一题就是 Malusa 教材 Esercizio 3.2 的第二个模型，正好训练你刚刚讨论的构造问题：
+
+\[\
+\boxed{\lim\_{x\to2}(x^2+4)=8}.\
+]
+
+请分成两部分提交：
+
+### Ricerca di (\delta)
+
+从
+
+\[\
+|(x^2+4)-8|=|x-2||x+2|\
+]
+
+开始，回答：
+
+1. 哪个因子已经是我们想控制的距离？
+
+2. 哪个因子目前无法直接控制？
+
+3. 怎样通过先要求 (|x-2|<1) 来控制该因子？
+
+4. 最终应当选择怎样的 (\delta)？
+
+### Verifica
+
+重新从
+
+\[\
+0<|x-2|<\delta\
+]
+
+出发，写出完整的正向意大利语证明。
+
+---
+
+# Connections (How does it connect with other concepts?)
+
+## 各种极限之间的对比
+
+| 输入            | 输出               | 定义骨架                                           |
+| ------------- | ---------------- | ---------------------------------------------- |
+| $x\to x_0$    | $f(x)\to\ell$    | $\forall\varepsilon\ \exists\delta\ \forall x$ |
+| $x\to+\infty$ | $f(x)\to\ell$    | $\forall\varepsilon\ \exists K\ \forall x$     |
+| $x\to x_0$    | $f(x)\to+\infty$ | $\forall M\ \exists\delta\ \forall x$          |
+| $x\to+\infty$ | $f(x)\to+\infty$ | $\forall M\ \exists K\ \forall x$              |
+
+---
+
+# Exercises (Have I genuinely learnt how to apply it?)
+
+- classic ex
+
+## mistake ex
+
+### Esercizio 3.2
+
+Dimostrare $\lim_{x\to2}(x^2+4)=8$
+
+La mia risposta:
+
+Abbiamo bisogno della condizione $\delta\leq1$ per controllare il fattore $|x+2|$. Infatti, se $|x-2|<\delta\leq1$, allora
+$$
+|x+2|=|(x-2)+4|\leq|x-2|+4<5.
+$$
+Pertanto il fattore $|x+2|$ è limitato superiormente da una costante indipendente da $x$.
+
+我们想证明$|x+2|<5$，经过观察我们发现可以使用$|x-2|<1$进行变换， $|x-2|<1 \implies -1<x-2<1 \implies 3<x+2<5 \implies |x+2|<5$，这样就能得到$|x+2|<5$ 。回过头来，我们最终需要的是$|x-2|<\delta$，所以，为了满足这两个不等式我们需要$\delta\leq1$ 。
+
+Abbiamo inoltre bisogno della condizione
+$$
+\delta\leq\frac{\varepsilon}{5}
+$$
+per ottenere la precisione richiesta. Infatti,
+$$\
+|x-2|<\delta\leq\frac{\varepsilon}{5}\
+$$
+e $|x+2|<5$, quindi
+$$
+|x-2||x+2|
+<
+\frac{\varepsilon}{5}\cdot5
+\varepsilon.
+$$
+
+Sia $\varepsilon>0$ arbitrario e poniamo
+
+$$
+\delta=\min\left\{2,\frac{\varepsilon}{6}\right\}>0.
+$$
+
+Sia $x\in\mathbb R$ tale che
+
+$$
+0<|x-2|<\delta.
+$$
+
+Poiché $\delta\leq2$, si ha
+
+$$
+|x+2|
+=
+|(x-2)+4|
+\leq
+|x-2|+4
+<
+6.
+$$
+
+Inoltre, poiché $\delta\leq\frac{\varepsilon}{6}$, si ha
+
+$$
+|x-2|<\frac{\varepsilon}{6}.
+$$
+
+Pertanto,
+
+$$
+\begin{aligned}
+|(x^2+4)-8|
+&=|x^2-4|\\
+&=|x-2||x+2|\\
+&<\frac{\varepsilon}{6}\cdot6\\
+&=\varepsilon.
+\end{aligned}
+$$
+
+Quindi, per definizione,
+
+$$
+\lim_{x\to2}(x^2+4)=8.
+$$
+
+
