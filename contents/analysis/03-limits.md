@@ -25,29 +25,254 @@ analysis/
 
 ### 01-definizioni-e-fondamenti.md (定义与基础)
 
-* **聚点 (Punti di accumulazione)** 在实数轴和扩展实数轴上的定义。
+现在我简要总结前面学过的内容（只写数学符号），就当是自己给自己的简短复习：
 
+邻域Intorno的定义：
 
-* 极限的一般定义，包括有限到有限的极限 **(limite finito al finito)**。
+$x_0\in \mathbb{R} \quad \delta>0 \quad U_{\delta}(x_0):=(x_0-\delta, x_0+\delta) = \left\{x\in \mathbb{R}: |x-x_0|<\delta \right\}$
 
+聚点Punto di accumulazione的定义：
 
-* **右极限 (limite destro)**、**左极限 (limite sinistro)** 以及极限存在的判定准则。
+$\forall \delta>0 , \quad \left((x_0-\delta, x_0+\delta)\setminus\{x_0\}\right) \cap A \ne \emptyset \iff \forall \delta>0 \quad \exists x\in A \quad \text{tale che} \quad 0<|x-x_0|<\delta$
 
+以函数 $f(x)$ 的自变量 $x$ 为锚点，总结函数极限的所有定义：
 
-* 极限不存在的情况证明，例如符号函数和 $\sin(1/x)$ 在 0 处的行为。
-
-
+Caso 1: $x\to x_0$
+$$
+\begin{aligned}
+\lim_{x\to x_0}f(x)=\ell \quad \forall \varepsilon>0 \quad \exists \delta>0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta \implies |f(x)-\ell|<\varepsilon
+\\
+\\
+\lim_{x\to x_0}f(x)=+\infty \quad \forall M>0 \quad \exists \delta>0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta \implies f(x)>M
+\\
+\\
+\lim_{x\to x_0}f(x)=-\infty \quad \forall M>0 \quad \exists \delta>0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta \implies f(x)<-M
+\end{aligned}
+$$
+Cas0 2: $x\to \infty$
+$$
+\begin{aligned}
+\lim_{x\to +\infty}f(x)=\ell \quad \forall \varepsilon>0 \quad \exists K\in\mathbb{R} \quad \forall x\in A , \quad x>K \implies |f(x)-\ell|<\varepsilon
+\\
+\\
+\lim_{x\to -\infty}f(x)=\ell \quad \forall \varepsilon>0 \quad \exists K\in\mathbb{R} \quad \forall x\in A , \quad x<K \implies |f(x)-\ell|<\varepsilon
+\\
+\\
+\lim_{x\to +\infty}f(x)=+\infty \quad \forall M>0 \quad \exists K\in\mathbb{R} \quad \forall x\in A , \quad x>K \implies f(x)>M
+\\
+\\
+\lim_{x\to -\infty}f(x)=-\infty \quad \forall M>0 \quad \exists K\in\mathbb{R} \quad \forall x\in A , \quad x<K \implies f(x)<-M
+\\
+\\
+\lim_{x\to +\infty}f(x)=-\infty \quad \forall M>0 \quad \exists K\in\mathbb{R} \quad \forall x\in A , \quad x>K \implies f(x)<-M
+\\
+\\
+\lim_{x\to -\infty}f(x)=+\infty \quad \forall M>0 \quad \exists K\in\mathbb{R} \quad \forall x\in A , \quad x<K \implies f(x)>M
+\end{aligned}
+$$
 
 ### 02-teoremi-sui-limiti.md (极限定理)
 
 * 极限的唯一性定理 **(Teorema di unicità del limite)** 及其证明。
 
+利用反证法证明极限的唯一性：
+
+Sia $f:A\to\mathbb R$ e sia $x_0$ un punto di accumulazione di $A$. Supponiamo che
+$$
+\lim_{x\to x_0}f(x)=\ell_1 \qquad \text{e} \qquad \lim_{x\to x_0}f(x)=\ell_2
+$$
+Supponiamo per assurdo che $\ell_1\neq\ell_2$ e, senza perdita di generalità, che $\ell_1>\ell_2$.
+Poniamo
+$$
+\varepsilon=\frac{|\ell_1-\ell_2|}{2} > 0
+$$
+Per definizione di limite esistono $\delta_1,\delta_2>0$ tali che
+$$
+\begin{aligned}
+\forall x\in A , \quad 0<|x-x_0|<\delta_1 \implies |f(x)-\ell_1| < \varepsilon
+\\
+\\
+\forall x\in A , \quad 0<|x-x_0|<\delta_2 \implies |f(x)-\ell_2| < \varepsilon
+\end{aligned}
+$$
+Poniamo $\delta=\operatorname{min}\{\delta_1, \delta_2\}$
+Poiché $x_0$ è un punto di accumulazione di $A$, esiste $x\in A$ tale che
+ $0<|x-x_0|<\delta$
+
+Per tale $x$ si ha contemporaneamente
+$$
+\ell_1 - \varepsilon < f(x) < \ell_1 + \varepsilon
+$$
+$$
+\ell_2 - \varepsilon < f(x) < \ell_2 + \varepsilon
+$$
+si ottiene
+$$
+\ell_2 + \varepsilon = \ell_2 + \frac{|\ell_1-\ell_2|}{2} = \frac{\ell_1+\ell_2}{2}
+$$
+$$
+\ell_1 - \varepsilon = \ell_1 - \frac{|\ell_1-\ell_2|}{2} = \frac{\ell_1+\ell_2}{2}
+$$
+quindi
+$$
+\ell_1 - \varepsilon = \ell_2 + \varepsilon = \frac{\ell_1+\ell_2}{2}
+$$
+si ottiene
+$$
+\ell_1 - \varepsilon = \frac{\ell_1+\ell_2}{2} < f(x) < \ell_2 + \varepsilon = \frac{\ell_1+\ell_2}{2}
+$$
+Pertanto, otteniamo una contraddizione, che è impossibile.
+
+Pertanto l’ipotesi $\ell_1\neq\ell_2$ è falsa e dunque $\ell_1 = \ell_2$
+
+Questo conclude la dimostrazione del teorema di unicità del limite.
+
 
 * 保号性定理 **(Teorema della permanenza del segno)** 及其证明。
+
+证明极限的保号性定理teorema及其推论corollario：
+
+Sia $f:A\to\mathbb R$ e sia $x_0\in \operatorname{Acc}(A)$,  $A\subseteq \mathbb{R}$. Supponiamo che
+$$
+\lim_{x\to x_0}f(x)=\ell
+$$
+Allora:
+1. Se $\ell > 0$ , esiste un intorno puntato di $x_0$ nel quale $f(x) > 0$
+2. Se $\ell < 0$ , esiste un intorno puntato di $x_0$ nel quale $f(x) < 0$
+
+Il corollario:
+1. Se $f(x) \geq 0$, $\forall x\in A$ allora $\ell \geq 0$
+
+La mia dimostrazione di teorema:
+
+Per caso  $\ell>0$
+
+Poniamo
+$$
+\varepsilon=\frac{\ell}{2} > 0
+$$
+Per definizione di limite esiste un $\delta>0$ tale che
+$$
+\forall x\in A , \quad 0<|x-x_0|<\delta \implies |f(x)-\ell| < \frac{\ell}{2}
+$$
+Dalla disuaguaglianza $|f(x)-\ell| < \frac{\ell}{2}$ si ottiene
+$$
+-\frac{\ell}{2} < f(x)-\ell < \frac{\ell}{2}
+\implies
+\frac{\ell}{2} < f(x) < \frac{3\ell}{2}
+$$
+Poiché $\frac{\ell}{2} > 0$
+
+inoltre $f(x)>0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta$
+
+Pertanto esiste un intorno puntato di $x_0$ nel quale la funzione mantiene segno positivo.
+
+Per caso $\ell < 0$
+
+Poniamo
+$$
+\varepsilon=\frac{|\ell|}{2} > 0
+$$
+si ottiene analogamente
+$$
+\frac{3\ell}{2} < f(x) < \frac{\ell}{2} < 0
+$$
+contemporamente $f(x)<0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta$
+
+Pertanto esiste un intorno puntato di $x_0$ nel quale la funzione mantiene segno negativo.
+
+La mia dimostrazione di corollario:
+
+Supponiamo che esista un intorno $U_1$ di $x_0$ tale che
+$$
+f(x) \geq 0 ,\quad \forall x\in [U_1 \setminus \{x_0\}]\cap A
+$$
+
+e che $\lim_{x\to x_0}f(x)=\ell$ 
+
+Supponiamo per assurdo che $\ell<0$. Per il il Teorema della permanenza del segno, esiste un intorno $U_2$ di $x_0$ tale che
+$$
+f(x) < 0 ,\quad \forall x\in [U_2 \setminus \{x_0\}]\cap A
+$$
+Poniamo $U=U_1\cap U_2$. Poiché $U$ è un intorno di $x_0$ e $x_0$ è un punto di accumulazione di $A$ , $\exists x\in [U \setminus \{x_0\}]\cap A$
+
+Per tale $x$ si ha contemporaneamente
+$$
+f(x) \geq 0 \quad \text{e} \quad f(x) < 0
+$$
+che è impossibile. Pertanto $\ell\geq0$.
+
+
+极限的保号性定理证明自我Logic Chain整理：
+
+有的时候即使写出了证明，也不代表自己完全理解了，在此写出自己证明过程中的思路。
+
+所谓极限的保号性定理，我自己的理解就是当函数的极限值大于或者小于0的时候，在某一个邻域范围内的函数的自变量$x$，会始终令函数值保持在正数或者负数的状态，函数值的正负和极限值的正负保持同一个状态。
+
+当然，我想我现在已经明白，只有自变量 $x$ 能决定函数 $f(x)$ 的值是多少，所以这个定理只是说明函数值的正负符号和极限值的正负符号**保持**同一状态，不代表极限值决定函数值。这也就是为什么一定要表明 $x_0\in \operatorname{Acc}(A) \quad x\in A \quad \exists \delta>0 \quad 0<|x-x_0|<\delta$（这些条件只是我随手罗列的，不代表我认为正式证明的过程的量词顺序如此，这只是思路的草稿） ，严格确定 $x$ 的取值范围。
+
+正确的量词顺序：$\ell > 0 \implies \exists \delta >0 \quad \forall x\in A, \quad 0<|x-x_0|<\delta \implies f(x) > 0$
+
+首先，考虑一个满足下列假设的函数：
+Sia $f:A\to\mathbb R$ e sia $x_0\in \operatorname{Acc}(A)$,  $A\subseteq \mathbb{R}$. Supponiamo che
+$$
+\lim_{x\to x_0}f(x)=\ell
+$$
+其次，讨论 $\ell > 0 \quad f(x) > 0$的情况，也是在草稿纸上从假设从结果逆推，我们要怎样找到一个合适的条件满足 $f(x) > 0$
+
+于是我们注意到 $\forall \varepsilon > 0$ 以及 $\ell > 0$之间的联系，不妨令 $\varepsilon=\frac{\ell}{2} > 0$ 成为我们理想中的选定值。
+
+但是，这一步由于是你给出的提示，其实我现在还是不明白为什么要设 $\varepsilon=\frac{\ell}{2} > 0$ ？仅仅是为了让 $0<\varepsilon<\ell$ 这样吗？特意让 $\varepsilon<\ell$ 是为了用 $\ell$ 表示 $\varepsilon$ 构成 $\varepsilon(\ell)$ 方便代入吗？在逻辑推理上有什么具体的意义吗？和我们之前做过的证明极限的题目是不是有一些相似？
+
+然后，根据极限定义正向推导，很容易就得到结果发现 $f(x)>0$，这里就不再赘述。
+
+当 $\ell < 0 \quad f(x) < 0$ 时，推导情况与上面相似，这里也不再赘述。
+
+最后，关于推论，我的疑问仅仅在于，为什么可以只假设 $\ell<0$ ？ 这样符合逻辑命题的推理吗？不应该同时也假设 $f(x)<0$ 吗？毕竟原题就是 $f(x) \ge 0 \implies \ell \ge 0$ ，如果要假设不应该都反过来写成$\ell < 0 \implies f(x) < 0$吗？当然，我知道这是错的，直接推导会显而易见，我只是在这个逻辑层面没有完全理清楚。
+
+总结，真正困难的过程仍然是开始要选取一个合适 $\varepsilon$ 取值，接下来的正向推导过程并不难。我的理解正确吗？我记得在证明极限的题目中，我们通常把 $\varepsilon$ 看成是已经默认给定的值，通常不能由我们控制，这里为什么又可以尝试改造 $\varepsilon$ 了？我对此找不到答案。
 
 
 * 具有有限极限的函数的局部有界性 **(Locale limitatezza di funzioni con limite finito)**。
 
+有限极限函数的局部有界性证明：
+
+La mia dimostrazione:
+
+Sia $f:A\to\mathbb R$, sia $x_0\in\operatorname{Acc}(A)$ e supponiamo che
+$$
+\lim_{x\to x_0}f(x)=\ell \in \mathbb{R}
+$$
+Poniamo $\varepsilon = 1$
+
+Per definizione di limite esiste $\delta>0$ tale che, per ogni $x\in A$,
+$$
+0<|x-x_0|<\delta \implies |f(x)-\ell| < \varepsilon = 1
+$$
+in contemporaneamente, per la disuguaglianza triangolare, da $|f(x)-\ell| < \varepsilon = 1$ si ottiene
+$$
+|f(x)| = \left| \left(f(x)-\ell\right) + \ell \right| \leq |f(x)-\ell|+|\ell| < 1 + |\ell|
+$$
+Poniamo $M=1+|\ell|>0$
+
+poichè
+$$
+|f(x)|<M
+$$
+per ogni $x\in A$ tale che
+$$
+0<|x-x_0|<\delta
+$$
+Pertanto $f$ è limitata in un opportuno intorno puntato di $x_0$, relativamente ad $A$.
+
+
+我对证明思路的疑问：
+
+首先，看来其核心思路还是在草稿纸上逆推 $|f(x)|<M$ 判断合适的 $\varepsilon$ 条件，也正如你之前所说，现在我们学习的三个定理都是在讨论极限值 $\varepsilon$ 还没确定的时候的性质，因此我们可以选定一个合适的 $\varepsilon$ 
+
+然后，由于你的提示，我已经知道选择 $\varepsilon = 1$ 和运用三角不等式最合适。这样虽然我只需要正向推断写出过程即可，但是我发现我无法从 $|f(x)|<M \implies -M < f(x) < M$ 逆推出任何有用的条件，你是如何知道 $\varepsilon = 1$ 的？ 而且我发现之前在证明极限学会的构造法在这三个定理中似乎都不怎么有用，没有明显可构造的条件。
+
+最后，虽然在你的提示下尝试用三角不等式构造了 $M$ 但是我的证明在逻辑上显然有缺陷，帮我指出在哪些地方。
 
 * 夹逼定理 / 比较定理 **(Teorema del confronto)**，包括其在无穷极限上的推广及证明。
 
