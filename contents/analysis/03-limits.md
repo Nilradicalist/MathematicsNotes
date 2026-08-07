@@ -23,7 +23,9 @@ analysis/
 
 ```
 
-### 01-definizioni-e-fondamenti.md (定义与基础)
+### 1. Definition
+
+#### 邻域、聚点和极限定义小结
 
 现在我简要总结前面学过的内容（只写数学符号），就当是自己给自己的简短复习：
 
@@ -43,13 +45,19 @@ $$
 \lim_{x\to x_0}f(x)=\ell \quad \forall \varepsilon>0 \quad \exists \delta>0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta \implies |f(x)-\ell|<\varepsilon
 \\
 \\
+\lim_{x\to x_{0}^{+}} f(x)=\ell \quad \forall \varepsilon > 0 \quad \exists \delta > 0 \quad \forall x \in A, \quad 0 < x - x_0 < \delta \implies |f(x) - \ell| < \varepsilon
+\\
+\\
+\lim_{x\to x_{0}^{-}} f(x)=\ell \quad \forall \varepsilon > 0 \quad \exists \delta > 0 \quad \forall x \in A, \quad -\delta < x - x_0 <0 \implies |f(x) - \ell| < \varepsilon
+\\
+\\
 \lim_{x\to x_0}f(x)=+\infty \quad \forall M>0 \quad \exists \delta>0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta \implies f(x)>M
 \\
 \\
 \lim_{x\to x_0}f(x)=-\infty \quad \forall M>0 \quad \exists \delta>0 \quad \forall x\in A , \quad 0<|x-x_0|<\delta \implies f(x)<-M
 \end{aligned}
 $$
-Cas0 2: $x\to \infty$
+Caso 2: $x\to \infty$
 $$
 \begin{aligned}
 \lim_{x\to +\infty}f(x)=\ell \quad \forall \varepsilon>0 \quad \exists K\in\mathbb{R} \quad \forall x\in A , \quad x>K \implies |f(x)-\ell|<\varepsilon
@@ -71,9 +79,75 @@ $$
 \end{aligned}
 $$
 
-### 02-teoremi-sui-limiti.md (极限定理)
+#### 极限存在判定定理（双侧极限存在的左右极限判别准则）
 
-* 极限的唯一性定理 **(Teorema di unicità del limite)** 及其证明。
+La definizione:
+
+Limite destro esempio:
+$$
+\lim_{x\to 0^+}\frac{1}{x}=+\infty
+$$
+
+$\forall M>0 \quad \exists \delta>0 \quad \forall x\in A,\quad 0<x-x_0<\delta \implies f(x)>M$ 
+
+Limite sinistro esempio:
+$$
+\lim_{x\to 0^-}\frac{1}{x}=-\infty
+$$
+
+$\forall M>0 \quad \exists \delta>0 \quad \forall x\in A ,\quad -\delta<x-x_0<0 \implies f(x)<-M$ 
+
+La mia dimostrazione:
+
+Primo esercizio:
+
+Sia $M>0$ arbitrario e scegliamo
+$$
+\delta=\frac{1}{M}>0
+$$
+Sia $x\in \mathbb{R}\setminus\{0\}$ tale che $0<x-0<\delta$, allora
+$$
+0<x<\delta=\frac{1}{M}
+$$
+quindi
+$$
+\frac{1}{x}>M
+$$
+Pertanto, per definizione,
+$$
+\lim_{x\to 0^+}\frac{1}{x}=+\infty
+$$
+
+Secondo esercizio:
+
+Sia $M>0$ arbitrario e scegliamo
+$$
+\delta=\frac{1}{M}>0
+$$
+Sia $x\in \mathbb{R}\setminus\{0\}$ tale che $-\delta<x-0<0$, allora
+$$
+-\delta<x<0 \implies
+0<-x<\delta=\frac{1}{M}
+$$
+quindi
+$$
+\frac{1}{x}<-M
+$$
+Pertanto, per definizione,
+$$
+\lim_{x\to 0^-}\frac{1}{x}=-\infty
+$$
+Poiché, i due limiti laterali esistono in $\overline{\mathbb R}$, ma sono diversi.
+
+Pertanto, per il criterio di esistenza del limite bilatero,
+$$
+\lim_{x\to 0}\frac{1}{x}
+$$
+non esiste, neppure in $\overline{\mathbb R}$. $\blacksquare$
+
+### 2. Theorem
+
+#### 2.1 极限的唯一性定理 **(Teorema di unicità del limite)** 及其证明
 
 利用反证法证明极限的唯一性：
 
@@ -96,6 +170,7 @@ $$
 \end{aligned}
 $$
 Poniamo $\delta=\operatorname{min}\{\delta_1, \delta_2\}$
+
 Poiché $x_0$ è un punto di accumulazione di $A$, esiste $x\in A$ tale che
  $0<|x-x_0|<\delta$
 
@@ -125,10 +200,9 @@ Pertanto, otteniamo una contraddizione, che è impossibile.
 
 Pertanto l’ipotesi $\ell_1\neq\ell_2$ è falsa e dunque $\ell_1 = \ell_2$
 
-Questo conclude la dimostrazione del teorema di unicità del limite.
+Questo conclude la dimostrazione del teorema di unicità del limite. $\blacksquare$
 
-
-* 保号性定理 **(Teorema della permanenza del segno)** 及其证明。
+#### 2.2 保号性定理 **(Teorema della permanenza del segno)** 及其证明
 
 证明极限的保号性定理teorema及其推论corollario：
 
@@ -202,6 +276,7 @@ f(x) \geq 0 \quad \text{e} \quad f(x) < 0
 $$
 che è impossibile. Pertanto $\ell\geq0$.
 
+$\blacksquare$
 
 极限的保号性定理证明自我Logic Chain整理：
 
@@ -233,7 +308,7 @@ $$
 总结，真正困难的过程仍然是开始要选取一个合适 $\varepsilon$ 取值，接下来的正向推导过程并不难。我的理解正确吗？我记得在证明极限的题目中，我们通常把 $\varepsilon$ 看成是已经默认给定的值，通常不能由我们控制，这里为什么又可以尝试改造 $\varepsilon$ 了？我对此找不到答案。
 
 
-* 具有有限极限的函数的局部有界性 **(Locale limitatezza di funzioni con limite finito)**。
+#### 2.3 具有有限极限的函数的局部有界性 **(Locale limitatezza di funzioni con limite finito)**
 
 有限极限函数的局部有界性证明：
 
@@ -265,6 +340,7 @@ $$
 $$
 Pertanto $f$ è limitata in un opportuno intorno puntato di $x_0$, relativamente ad $A$.
 
+$\blacksquare$
 
 我对证明思路的疑问：
 
@@ -274,13 +350,746 @@ Pertanto $f$ è limitata in un opportuno intorno puntato di $x_0$, relativamente
 
 最后，虽然在你的提示下尝试用三角不等式构造了 $M$ 但是我的证明在逻辑上显然有缺陷，帮我指出在哪些地方。
 
-* 夹逼定理 / 比较定理 **(Teorema del confronto)**，包括其在无穷极限上的推广及证明。
+#### 2.4 比较定理 **(Teorema del confronto)**包括其在无穷极限上的推广及证明
 
+##### 2.4.1 有限极限的比较定理
 
-* 有限极限的四则运算 **(Operazioni sui limiti finiti)** 及其证明。
+Teorema:
 
+Siano $f,g,h: A \to \mathbb{R}$
 
-* 单调函数的极限 **(Limiti di funzioni monotone)** 及其证明。
+sia $x_0$ un punto di accumulazione di A.
+
+Supponiamo che esista un intorno puntato di $x_0$ tale che
+$$
+f(x) \le g(x) \le h(x)
+$$
+e che
+$$
+\lim_{x \to x_0} f(x) = \lim_{x \to x_0} h(x) = \ell
+$$
+Allora $\lim_{x \to x_0} g(x) = \ell$
+
+La mia dimostrazione:
+
+Sia $\varepsilon > 0$ arbitrario
+
+Per ipotesi esiste $\delta_0>0$ tale che
+$$
+0 < |x - x_0| < \delta_0 \implies f(x) \le g(x) \le h(x)
+$$
+poiché $\lim_{x \to x_0} f(x) = \lim_{x \to x_0} h(x) = \ell$
+
+esiste $\delta_1, \delta_2 > 0$ , tali che
+
+$\forall x\in A, \quad 0 < |x - x_0| < \delta_1 \implies \ell - \varepsilon < f(x) < \ell + \varepsilon$
+
+$\forall x\in A, \quad 0 < |x - x_0| < \delta_2 \implies \ell - \varepsilon < h(x) < \ell + \varepsilon$
+
+Poniamo $\delta = \min\{\delta_0, \delta_1, \delta_2\}$ , allora $\forall x \in A , \quad 0<|x-x_0|<\delta$ , contemporaneamente si ha
+$$
+\ell - \varepsilon < f(x)  \qquad  h(x) < \ell + \varepsilon
+$$
+Poiché per ipotesi $f(x) \le g(x) \le h(x)$ si ottiene
+$$
+\ell - \varepsilon < f(x) \leq g(x) \leq h(x) < \ell + \varepsilon
+$$
+Quindi
+$$
+\ell - \varepsilon < g(x) < \ell + \varepsilon \implies |g(x)-\ell|<\varepsilon \quad (\varepsilon>0)
+$$
+Pertanto, per definizione di limite $\lim_{x \to x_0} g(x) = \ell$
+
+$\blacksquare$
+
+我对证明中的一些疑问（包括其它学习过的定理证明）：
+
+这个定理由于教授上课讲的很详细，因此我的疑问不多，唯一的疑问就在于 $f(x),h(x)$ 的取值范围。无论是唯一性定理还是这个比较定理为什都可以只取不等式一边的值？举例：
+
+在证明唯一性定理的时候我们发现：
+Per tale $x$ si ha contemporaneamente
+$$
+\ell_1 - \varepsilon < f(x) < \ell_1 + \varepsilon
+$$
+$$
+\ell_2 - \varepsilon < f(x) < \ell_2 + \varepsilon
+$$
+然后，分别只取出两个不等式的一边：
+si ottiene
+$$
+\ell_1 - \varepsilon = \frac{\ell_1+\ell_2}{2} < f(x) < \ell_2 + \varepsilon = \frac{\ell_1+\ell_2}{2}
+$$
+在证明比较定理的时候我们也是：
+esiste $\delta_1, \delta_2 > 0$ , tali che
+
+$0 < |x - x_0| < \delta_1$ , $\ell - \varepsilon < f(x) < \ell + \varepsilon$
+
+$0 < |x - x_0| < \delta_2$ , $\ell - \varepsilon < h(x) < \ell + \varepsilon$
+
+然后，分别只取出两个不等式的一边：
+$$
+\ell - \varepsilon < f(x)  \qquad  h(x) < \ell + \varepsilon
+$$
+这样取值在逻辑上有什么依据吗？数学依据在哪里？唯一性定理里面至少是同一个 $f(x)$ 的不同取值范围，但是比较定理里面是不同的两个函数有同一个取值范围，为什么可以这样取值？当然，你可能会说，这是ipotesi里面就假设好的 $f(x) \le g(x) \le h(x)$ ，所以这样；那么我如果反过来假设 $h(x) \le g(x) \le f(x)$ ，那么我是不还是也要改变取值范围，变为$\ell - \varepsilon < h(x)  \qquad  f(x) < \ell + \varepsilon$ ？是因为仅仅是由ipotesi决定的吗？那么唯一性定理里面又是怎么回事？更换不等式两边的式子的依据在哪里？
+
+##### 2.4.2 无限极限的比较定理
+
+Teorema:
+
+Siano $f,g: A \to \mathbb{R}$
+
+sia $x_0$ un punto di accumulazione di A.
+
+Supponiamo che esista un intorno puntato di $x_0$ tale che
+$$
+f(x) \le g(x)
+$$
+e che
+$$
+\lim_{x \to x_0} f(x) = +\infty
+$$
+Allora $\lim_{x \to x_0} g(x) = +\infty$
+
+La mia dimostrazione:
+
+Sia $M > 0$ arbitrario
+
+Per ipotesi esiste $\delta_0>0$ tale che
+$$
+0 < |x - x_0| < \delta_0 \implies f(x) \le g(x)
+$$
+poiché $\lim_{x \to x_0} f(x) = +\infty$
+
+esiste $\delta_1 > 0$ , tale che
+
+$\forall x \in A \quad 0 < |x - x_0| < \delta_1 \implies f(x) > M$
+
+Poniamo $\delta = \min\{\delta_0, \delta_1\}$ , allora $\forall x \in A , \quad 0<|x-x_0|<\delta$ , contemporaneamente si ha
+$$
+f(x)>M
+$$
+Poiché per ipotesi $f(x) \le g(x)$ si ottiene
+$$
+g(x) \geq f(x) > M
+$$
+Pertanto
+$$
+\forall x \in A , \quad 0<|x-x_0|<\delta \implies g(x)>M
+$$
+Poiché $M>0$ è arbitrario, per definizione di limite infinito $\lim_{x \to x_0} g(x) = +\infty$
+
+$\blacksquare$
+
+我对目前这些极限定理证明的疑问：
+为什么无论是唯一性定理、保号性定理、局部有界性定理、比较定理全都只是在讨论 $x\to x_0$ 时 $f(x)\to \ell$ 的情况？难道这些定理在 $x\to \infty$ 时 $f(x)\to \infty$ 的时候无法成立吗？因此就没有讨论的意义吗？不过我自己已经在草稿纸上推导过，只要正确地将输入条件和输出目标替换，定理依然成立。当然，对于有限极限函数的局部有界性，如果把输出端改为 $f(x)\to \infty$ 可能要特别注意。我只是好奇为什么教授一般不再展开讨论的原因。
+
+#### 2.5 有限极限的四则运算 **(Operazioni sui limiti finiti)** 及其证明
+
+##### 2.5.1 有瑕疵的证明和一些初步思路
+
+Teorema:
+
+Titolo:
+
+Allora esistono in $x_0$ anche i limiti di $f+g$ ed $f \cdot g$ e si ha
+$$
+\lim_{x \to x_0} [f(x) + g(x)] = \ell + m \qquad \text{e} \qquad \lim_{x \to x_0} [f(x) \cdot g(x)] = \ell \cdot m
+$$
+se inoltre $m \neq 0$ , allora esiste anche il limite
+$$
+\lim_{x \to x_0} \left[\frac{f(x)}{g(x)}\right] = \frac{\ell}{m}
+$$
+Ipotesi:
+
+Siano $f,g: A \to \mathbb{R}$
+
+sia $x_0$ un punto di accumulazione di A.
+
+Supponiamo che esistano i limiti un intorno puntato di $x_0$ tale che
+$$
+\lim_{x \to x_0} f(x) = \ell \in \mathbb{R} \qquad \lim_{x \to x_0} g(x) = m\in \mathbb{R}
+$$
+
+La mia dimostrazione:
+
+Dimostrazione di addizione:
+
+Sia $\varepsilon > 0$ arbitrario
+
+Per ipotesi $\lim_{x \to x_0} f(x) = \ell \in \mathbb{R} \qquad \lim_{x \to x_0} g(x) = m\in \mathbb{R}$ esiste $\delta_0>0$ tale che
+$$
+\forall x\in A, \quad 0 < |x - x_0| < \delta_0 \implies \left|\left(f(x)+g(x)\right) - (\ell + m)\right| < \varepsilon
+$$
+si ottiene
+$$
+\left|\left(f(x)+g(x)\right) - (\ell + m)\right| = |((f(x) - \ell) + g(x) - m))| = |f(x) - \ell| + |g((x) - m| < \varepsilon
+$$
+poiché $\lim_{x \to x_0} f(x) = \ell \in \mathbb{R} \qquad \lim_{x \to x_0} g(x) = m \in \mathbb{R}$
+
+esistono $\delta_1, \delta_2 > 0$ , tali che
+
+$\forall x\in A, \quad 0 < |x - x_0| < \delta_1 \implies \ell - \frac{\varepsilon}{2} < f(x) < \ell + \frac{\varepsilon}{2}$
+
+$\forall x\in A, \quad 0 < |x - x_0| < \delta_2 \implies  m - \frac{\varepsilon}{2} < g(x) < m + \frac{\varepsilon}{2}$
+
+Poniamo $\delta = \min\{\delta_0, \delta_1, \delta_2\}$ , allora $\forall x \in A , \quad 0<|x-x_0|<\delta$ , contemporaneamente si ha
+$$
+\ell + m - (\frac{\varepsilon}{2} + \frac{\varepsilon}{2}) < f(x) + g(x) < \ell + m + (\frac{\varepsilon}{2} + \frac{\varepsilon}{2}) \implies \left|\left(f(x)+g(x)\right) - (\ell + m)\right| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+$$
+Poiché per ipotesi si ottiene
+$$
+\lim_{x \to x_0} [f(x) + g(x)] = \ell + m \impliedby \left|\left(f(x)+g(x)\right) - (\ell + m)\right| < \varepsilon
+$$
+Pertanto, per definizione di limite $\lim_{x \to x_0} [f(x) + g(x)] = \ell + m$
+
+Dimostrazione di moltiplicazione:
+
+Sia $\varepsilon > 0$ arbitrario
+
+Per ipotesi $\lim_{x \to x_0} f(x) = \ell \in \mathbb{R} \qquad \lim_{x \to x_0} g(x) = m\in \mathbb{R}$ esiste $\delta_0>0$ tale che
+$$
+\forall x\in A, \quad 0 < |x - x_0| < \delta_0 \implies |f(x) \cdot g(x) - \ell \cdot m| < \varepsilon
+$$
+si ottiene
+$$
+\left|[f(x) \cdot g(x)] - (\ell \cdot m)\right| = \left|[f(x) \cdot g(x)] - \ell g(x) + \ell g(x) - (\ell \cdot m)\right|
+$$
+allora
+$$
+\left|[f(x) \cdot g(x)] - \ell g(x) + \ell g(x) - (\ell \cdot m)\right|
+= |g(x)||f(x) - \ell| + |\ell||g(x) - m|
+$$
+applicando la disuguaglianza triangolare,
+$$
+\left|[f(x) \cdot g(x)] - (\ell \cdot m)\right| \leq |g(x)||f(x) - \ell| + |\ell||g(x) - m|
+$$
+Poiché $g(x) \to m$ , scegliamo $\varepsilon=1$
+
+quindi esiste $\delta_1>0$ tale che
+$$
+\forall x\in A, \quad 0 < |x - x_0| < \delta_1 \implies |g(x) - m| < \varepsilon = 1
+$$
+si ottiene $|g(x)| \leq |m| + 1$
+
+allora
+$$
+\left|[f(x) \cdot g(x)] - (\ell \cdot m)\right| \leq (|m|+1)\cdot|f(x) - \ell| + |\ell||g(x) - m|
+$$
+quindi esiste $\delta_2, \delta_3>0$ tale che
+$$
+\begin{aligned}
+\forall x\in A, \quad 0 < |x - x_0| < \delta_2 \implies |f(x) - \ell| < \frac{\varepsilon}{2(|m|+1)}
+\\
+\\
+\forall x\in A, \quad 0 < |x - x_0| < \delta_3 \implies |g(x) - m| < \frac{\varepsilon}{2(|\ell|+1)}
+\end{aligned}
+$$
+osserviamo che $|\ell| \leq |\ell| + 1$
+
+quindi
+$$
+|\ell| \cdot \frac{\varepsilon}{2(|\ell|+1)} < \frac{\varepsilon}{2}
+$$
+poniamo $\delta=\min \{\delta_0,\delta_1,\delta_2,\delta_3\}$
+
+Per $0<|x-x_0|<\delta$
+
+segue
+$$
+\left|[f(x) \cdot g(x)] - (\ell \cdot m)\right| \leq (|m| + 1) \cdot \left(\frac{\varepsilon}{2(|m|+1)}\right) + |\ell| \cdot \left(\frac{\varepsilon}{2(|\ell|+1)}\right) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+$$
+Pertanto
+$$
+\lim_{x \to x_0} [f(x) \cdot g(x)] = \ell \cdot m
+$$
+
+Dimostrazione di reciproco:
+
+Se $\lim_{x \to x_0} g(x) =  m$ con $m \in \mathbb{R}\setminus\{0\}$
+
+allora $\lim_{x \to x_0} \frac{1}{g(x)} =  \frac{1}{m}$
+
+Poiché $m \in \mathbb{R}\setminus\{0\}$ , scegliamo $\varepsilon = \frac{|m|}{2}$
+
+allora esiste $\delta_1 > 0$ tale che
+$$
+|g(x) - m| < \varepsilon = \frac{|m|}{2}
+$$
+cioè
+$$
+|g(x)| > |m| - \frac{|m|}{2} = \frac{|m|}{2}
+$$
+infatti $g(x)$ non può annullarsi vicino a $x_0$
+
+quinid
+$$
+\left| \frac{1}{g(x)} - \frac{1}{m} \right| = \frac{|g(x) - m|}{|g(x)||m|}
+$$
+poiché $|g(x)|>\frac{|m|}{2} \implies |g(x)||m|>\frac{|m|^2}{2}$
+
+quindi
+$$
+\left| \frac{1}{g(x)} - \frac{1}{m} \right| < \frac{2}{|m|^2}|g(x) - m|
+$$
+ora scegliamo $\delta_2>0$ tale che
+$$
+|g(x) - m| < \frac{|m|^2}{2} \varepsilon
+$$
+allora
+$$
+\left| \frac{1}{g(x)} - \frac{1}{m} \right| < \varepsilon
+$$
+Pertanto
+$$
+\lim_{x \to x_0} \frac{1}{g(x)} =  \frac{1}{m}
+$$
+
+Dimostrazione di quoziente:
+
+combiamo il prodotto e reciproco, si ottiene
+$$
+\lim_{x \to x_0} \left[\frac{f(x)}{g(x)}\right] = \frac{\ell}{m}
+$$
+
+我对这个证明的疑问：
+1. 我还是不明白，为什么在有限极限的四则运算证明中还是可以自由选择 $\varepsilon$ ，这和前面的几个定理都有什么相同之处和不同之处？
+2. 在证明乘法和除法的时候是不是必须借用三角不等式进行构造然后利用有限极限函数的有界性定理判断取值范围？这一步证明十分繁琐，我也不确定有没有出错。
+3. 由于证明过程过于繁琐，我希望这次你直接判断我如果没有最根本的逻辑思路上的错误的话，就直接给出一个逻辑严密、结构清晰的有限极限函数的加法、乘法和倒数（除法）的意大利语证明，然后紧接着进入下一个任务。因为我们这个月的复习备考计划重点在于，要在有限的时间内尽可能提高考试分数。这个证明的理解需要较长的时间，而我们不必把一天甚至数天的时间放在理解一个证明上面。
+4. 最后，帮助我数理清楚证明有限极限函数的四则运算的Logic Chain，尤其是乘法和倒数（除法）。
+
+##### 2.5.2 正式的证明
+
+Siano $f,g:A\to\mathbb R$ e sia $x_0\in\operatorname{Acc}(A)$. Supponiamo che
+ $$
+ \lim_{x\to x_0}f(x)=\ell\in\mathbb R,
+ \qquad
+ \lim_{x\to x_0}g(x)=m\in\mathbb R.
+ $$
+ Allora
+ $$
+ \lim_{x\to x_0}(f(x)+g(x))=\ell+m
+ $$
+ $$
+ \lim_{x\to x_0}f(x)g(x)=\ell m
+ $$
+ Se inoltre $m\neq0$, allora
+ $$
+ \lim_{x\to x_0}\frac{f(x)}{g(x)}=
+ \frac{\ell}{m}
+ $$
+
+ ###### 1.Somma
+
+ Sia $\varepsilon_0$ arbitrario.
+
+ Poiché $f(x)\to\ell$, esiste $\delta_1>0$ tale che
+ $$
+ 0<|x-x_0|<\delta_1
+ \implies
+ |f(x)-\ell|<\frac{\varepsilon}{2}
+ $$
+
+ Analogamente, poiché $g(x)\to m$, esiste $\delta_2>0$ tale che
+ $$
+ 0<|x-x_0|<\delta_2
+ \implies
+ |g(x)-m|<\frac{\varepsilon}{2}
+ $$
+ Poniamo
+ $$
+ \delta=\min\{\delta_1,\delta_2\}
+ $$
+ Per ogni $x\in A$ tale che $0<|x-x_0|<\delta$, per la disuguaglianza triangolare,
+ $$
+ \begin{aligned}
+ |(f(x)+g(x))-(\ell+m)| 
+ &=
+ |(f(x)-\ell)+(g(x)-m)| \\
+ &\leq |f(x)-\ell|+|g(x)-m| \\
+ &<
+ \frac{\varepsilon}{2} 
+ +
+ \frac{\varepsilon}{2} 
+ =\varepsilon
+ \end{aligned}
+ $$
+ Pertanto
+ $$
+ \lim_{x\to x_0}(f(x)+g(x))=\ell+m
+ $$
+ 
+ ###### 2.Prodotto
+
+ Sia $\varepsilon > 0$ arbitrario.
+
+ Poiché $f(x)\to\ell\in\mathbb R$, per la locale limitatezza esistono $B$ e $\delta_0>0$ tali che
+ $$
+ 0<|x-x_0|<\delta_0
+ \implies
+ |f(x)|<B
+ $$
+ Inoltre, poiché $g(x)\to m$, esiste $\delta_1>0$ tale che
+ $$
+ 0<|x-x_0|<\delta_1
+ \implies
+ |g(x)-m|<\frac{\varepsilon}{2B}
+ $$
+ Poiché $f(x)\to\ell$, esiste $\delta_2>0$ tale che
+ $$
+ 0<|x-x_0|<\delta_2
+ \implies
+ |f(x)-\ell|
+ <
+ \frac{\varepsilon}{2(|m|+1)}
+ $$
+ Poniamo
+ $$
+ \delta=\min\{\delta_0,\delta_1,\delta_2\}
+ $$
+ 
+ Per ogni $x\in A$ tale che $0<|x-x_0|<\delta$,
+ $$
+ \begin{aligned}
+ |f(x)g(x)-\ell m|
+ &=
+ |f(x)(g(x)-m)+m(f(x)-\ell)| \\
+ &\leq
+ |f(x)||g(x)-m|
+ +
+ |m||f(x)-\ell| \\
+ &<
+ B\frac{\varepsilon}{2B}
+ +
+ |m|\frac{\varepsilon}{2(|m|+1)}\\
+ &<
+ \frac{\varepsilon}{2}
+ +
+ \frac{\varepsilon}{2}=
+ \varepsilon
+ \end{aligned}
+ $$
+
+ Pertanto
+ $$
+ \lim_{x\to x_0}f(x)g(x)=\ell m
+ $$
+ 
+ ###### 3.Reciproco
+
+ Supponiamo ora che $m\neq0$ e dimostriamo che
+ $$
+ \lim_{x\to x_0}\frac1{g(x)}=\frac1m
+ $$
+ 
+ Sia $\varepsilon>0$ arbitrario.
+
+ Poiché $g(x)\to m$, esiste $\delta_0>0$ tale che
+ $$
+ 0<|x-x_0|<\delta_0
+ \implies
+ |g(x)-m|<\frac{|m|}{2}
+ $$
+
+ Dalla disuguaglianza triangolare inversa segue
+ $$
+ |g(x)|
+ \geq
+ |m|-|g(x)-m|>
+ \frac{|m|}{2}
+ $$
+
+ In particolare $g(x)\neq0$ in tale intorno puntato.
+
+ Inoltre, poiché $g(x)\to m$, esiste $\delta_1>0$ tale che
+ $$
+ 0<|x-x_0|<\delta_1
+ \implies
+ |g(x)-m|
+ <\
+ \frac{\varepsilon |m|^2}{2}
+ $$
+ Poniamo
+ $$
+ \delta=\min\{\delta_0, \delta_1\}
+ $$
+ 
+ Allora, per $0<|x-x_0|<\delta$,
+ $$
+ \begin{aligned}
+ \left|\frac1{g(x)}-\frac1m\right|
+ &=
+ \frac{|g(x)-m|}{|g(x)||m|}\\
+ &<
+ \frac{2}{|m|^2}|g(x)-m| \\
+ &<
+ \frac{2}{|m|^2}\
+ \frac{\varepsilon|m|^2}{2}\\
+ &=\varepsilon
+ \end{aligned}
+ $$
+
+ Pertanto
+ $$
+ \lim_{x\to x_0}\frac1{g(x)}=\frac1m
+ $$
+ 
+ ###### 4.Quoziente
+
+ Poiché
+ $$
+ \frac{f(x)}{g(x)}=
+ f(x)\frac1{g(x)}
+ $$
+
+ applicando il risultato sul prodotto otteniamo
+ $$
+ \lim_{x\to x_0}\frac{f(x)}{g(x)}=
+ \ell\frac1m=
+ \frac{\ell}{m}
+ $$
+
+ Questo conclude la dimostrazione.
+
+#### 2.6 多项式极限的证明
+
+计算 $\lim_{x\to0}\frac{1-\cos x}{x^2}$ 以及用有限极限函数的四则运算证明多项式的极限：
+
+Sappiamo che
+$$
+\lim_{x\to0}\frac{\sin x}{x} = 1 \qquad
+\lim_{x\to0}\cos x = 1
+$$
+quindi
+$$
+\begin{aligned}
+\lim_{x\to0}\frac{1-\cos x}{x^2}
+&=
+\lim_{x\to0}\frac{(1-\cos x)(1+\cos x)}{x^2(1+\cos x)} \\
+&=
+\lim_{x\to0}\frac{(1-\cos^2 x)}{x^2(1+\cos x)} \\
+&=
+\lim_{x\to0}\frac{\sin^2 x}{x^2(1+\cos x)} \\
+&=
+\lim_{x\to0}\frac{\sin x}{x} \cdot \lim_{x\to0}\frac{\sin x}{x} \cdot \frac{1}{1+\lim_{x\to0}\cos x} \\
+&=
+1 \cdot 1 \cdot \frac{1}{1+1} \\
+&=
+\frac{1}{2}
+\end{aligned}
+$$
+
+证明多项式极限：
+
+Poiché
+$$
+\lim_{x\to x_0}x^k=x_0^k \ (k=0,\ldots,n)
+$$
+e $a_k$ è costante, si ha
+$$
+\lim_{x\to x_0}(a_kx^k)=a_kx_0^k
+$$
+Per le regole della somma e del prodotto dei limiti finiti,
+$$
+\lim_{x\to x_0}P(x)
+=\sum_{k=0}^{n}\lim_{x\to x_0}(a_kx^k)
+=\sum_{k=0}^{n}a_kx_0^k
+$$
+Poiché
+$$
+\sum_{k=0}^{n}a_kx_0^k=P(x_0),
+$$
+Pertanto
+$$
+\lim_{x\to x_0}P(x)=P(x_0)
+$$
+$\blacksquare$
+
+我对多项式极限证明的疑问：
+
+这个证明不难，多我而言最难的是如何从 $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ 转化为 $\lim_{x\to x_0}x^k=x_0^k \ (k=0,\ldots,n)$ 再得到
+$$
+\lim_{x\to x_0}P(x)
+=\sum_{k=0}^{n}\lim_{x\to x_0}(a_kx^k)
+=\sum_{k=0}^{n}a_kx_0^k
+$$
+的这整个过程。因为，第一眼看到 $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ 肯定是无从下手，因为多项式的定义虽然说多项式是“有限”的，但是对于人的笔和纸张来说是“无限”的，不可能写完。如果没有提示的话，我完全想不到要用求和符号来简化运算表达。那么这一步的转化到底是如何思考的？是依据哪些已有的知识？整个逻辑推导的过程是怎样的？
+
+#### 2.7 有限极限函数乘无穷
+
+有限极限函数乘无穷大或者无穷小的一般性证明：
+
+Caso 1: Limite finito non nullo moltiplicato per un infinito
+
+Sia
+$$
+\lim_{x\to x_0}f(x)=l,\qquad l\in\mathbb{R}.
+$$
+Se
+
+$$
+\lim_{x\to x_0}f(x)=l\neq0,
+$$
+
+e
+$$
+\lim_{x\to x_0}g(x)=+\infty,
+$$
+allora
+
+$$
+\lim_{x\to x_0}f(x)g(x)=
+\begin{cases}
++\infty,& l>0,\\
+-\infty,& l<0.
+\end{cases}
+$$
+
+##### Dimostrazione:
+
+Poiché
+$$
+\lim_{x\to x_0}f(x)=l\neq0,
+$$
+esiste un intorno di $x_0$ tale che
+$$
+\frac{|l|}{2}<|f(x)|<\frac{3|l|}{2}.
+$$
+Inoltre il segno di $f(x)$ coincide con quello di $l$.
+
+Caso $l>0$ , 
+
+Per $x$ sufficientemente vicino a $x_0$,
+$$
+\frac{l}{2}<f(x)<\frac{3l}{2}.
+$$
+Poiché
+$$
+g(x)\longrightarrow+\infty,
+$$
+si ha anche
+$$
+g(x)>0
+$$
+eventualmente.
+
+Moltiplicando membro a membro,
+$$
+\frac{l}{2}g(x)
+<
+f(x)g(x)
+<
+\frac{3l}{2}g(x).
+$$
+Ora
+$$
+\lim_{x\to x_0}\frac{l}{2}g(x)=+\infty,
+$$
+e
+$$
+\lim_{x\to x_0}\frac{3l}{2}g(x)=+\infty.
+$$
+Per il Teorema di Confronto,
+
+$$
+\lim_{x\to x_0}f(x)g(x)=+\infty
+$$
+
+---
+
+Caso $l<0$ , 
+
+Per $x$ sufficientemente vicino a $x_0$,
+$$
+\frac{3l}{2}<f(x)<\frac{l}{2}<0.
+$$
+Moltiplicando per $g(x)>0$,
+$$
+\frac{3l}{2}g(x)
+<
+f(x)g(x)
+<
+\frac{l}{2}g(x).
+$$
+
+Poiché entrambi gli estremi tendono a $-\infty$,
+$$
+\lim_{x\to x_0}f(x)g(x)=-\infty
+$$
+
+---
+
+Caso 2: Limite finito moltiplicato per un infinitesimo
+
+Sia
+$$
+\lim_{x\to x_0}f(x)=l\in\mathbb{R},
+$$
+e
+$$
+\lim_{x\to x_0}g(x)=0,
+$$
+allora
+$$
+\lim_{x\to x_0}f(x)g(x)=0
+$$
+
+Dimostrazione: 
+
+Poiché
+$$
+\lim_{x\to x_0}f(x)=l,
+$$
+la funzione è limitata in un intorno di $x_0$.
+
+Esiste quindi una costante $M>0$ tale che
+$$
+|f(x)|\le M.
+$$
+Da questa disuguaglianza segue
+$$
+|f(x)g(x)|
+\le
+M|g(x)|
+$$
+Inoltre,
+$$
+0
+\le
+|f(x)g(x)|
+\le
+M|g(x)|.
+$$
+Poiché
+
+$$
+\lim_{x\to x_0}M|g(x)|=
+M\cdot0=0
+$$
+
+per il Teorema di Confronto otteniamo
+$$
+\lim_{x\to x_0}|f(x)g(x)|=0
+$$
+
+Infine,
+$$
+-|f(x)g(x)|
+\le
+f(x)g(x)
+\le
+|f(x)g(x)|
+$$
+
+Entrambi gli estremi tendono a $0$; applicando nuovamente il Teorema di Confronto,
+$$
+\lim_{x\to x_0}f(x)g(x)=0
+$$
+$\blacksquare$
+
+我对这个证明的疑问：
+很明显，使用有限极限函数的四则运算法则会有更简洁的证明，为什么你要求我只使用比较定理来证明呢？是因为分析学中其实有未定式这样的存在，例如 $0 \cdot \infty$ 这样的未定式是无法计算的，所以无法使用四则运算。是这样的吗？那这样的未定式总共有多少种类型？遇到它们又该如何处理呢？如果这些内容在之后的复习备考任务中，现在我们就暂时不讨论，不必打乱复习顺序，一切按照计划来。
+
+#### 单调函数的极限 **(Limiti di funzioni monotone)** 及其证明
 
 
 
@@ -347,83 +1156,6 @@ Pertanto $f$ è limitata in un opportuno intorno puntato di $x_0$, relativamente
 
 ---
 
-## 1.4 左右极限 (Limiti Destro e Sinistro)
-
-### 严谨数学定义 (Definizione Rigorosa)
-
-设函数 $f: A \to \mathbb{R}$，且 $x_0$ 是定义域 $A$ 的聚点。
-
-**右极限 (Limite Destro):** 我们称 $L \in \mathbb{R}$ 是 $x$ 从右侧趋近于 $x_0$ 时 $f(x)$ 的极限，记作 $\lim_{x \to x_0^+} f(x) = L$，当且仅当：
-
-$$\forall \varepsilon > 0, \exists \delta > 0 \text{ tale che } \forall x \in A, 0 < x - x_0 < \delta \implies |f(x) - L| < \varepsilon$$
-
-_(注意：这里是 $0 < x - x_0$ 而不是绝对值，表示 $x$ 严格大于 $x_0$)_
-
-**左极限 (Limite Sinistro):** 同理，记作 $\lim_{x \to x_0^-} f(x) = L$，当且仅当：
-
-$$\forall \varepsilon > 0, \exists \delta > 0 \text{ tale che } \forall x \in A, -\delta < x - x_0 < 0 \implies |f(x) - L| < \varepsilon$$
-
----
-
-## 1.5 拓广实数系与无穷大极限 (Limiti all'infinito e Limiti infiniti)
-
-### 严谨数学定义 (Definizione Rigorosa)
-
-**自变量趋于无穷 (Limite all'infinito):** $\lim_{x \to +\infty} f(x) = L$
-
-当且仅当：
-
-$$\forall \varepsilon > 0, \exists M > 0 \text{ tale che } \forall x > M \implies |f(x) - L| < \varepsilon$$
-
-_(这里不再用极其微小的 $\delta$ 来约束自变量，而是用一个极大的阈值 $M$)_
-
-**函数值趋于无穷 (Limite infinito):** $\lim_{x \to x_0} f(x) = +\infty$
-
-当且仅当：
-
-$$\forall N > 0, \exists \delta > 0 \text{ tale che } \forall x \in A, 0 < |x - x_0| < \delta \implies f(x) > N$$
-
-### 通俗解释 (Spiegazione Intuitiva)
-
-如果说之前的极限是在研究显微镜下的世界（用极其微小的 $\delta$ 逼近一个确定的点），那么这里的极限就是在研究宇宙的边缘（无穷大 $\infty$）。
-
--   **$x \to \infty$：** 就像我们在写代码时评估算法的“时间复杂度”。我们不在乎程序处理 10 条数据需要几秒，我们在乎的是，如果数据量爆炸到 1 个亿（越过了某个巨大的阈值 $M$），程序的运行时间是否会稳定在某个固定值 $L$ 附近。
-    
--   **$f(x) \to \infty$：** 就像我们探索黑洞。当我们离黑洞中心（奇点 $x_0$）越来越近时（距离小于 $\delta$），引力（函数值）会变得无比巨大，超过我们能想象的任何上限 $N$。
-
----
-
-## 1.6 极限的几个核心定理 (Teoremi sui Limiti)
-
-### 严谨数学定理 (Teoremi Rigorosi)
-
-1.  **唯一性定理 (Unicità del Limite):**
-    
-    如果 $\lim_{x \to x_0} f(x) = L_1$ 且 $\lim_{x \to x_0} f(x) = L_2$，则必然有 $L_1 = L_2$。
-    
-2.  **保号性定理 (Permanenza del Segno):**
-    
-    如果 $\lim_{x \to x_0} f(x) = L > 0$，那么存在一个 $x_0$ 的去心邻域，使得在这个邻域内，对于所有的 $x$，都有 $f(x) > 0$。
-    
-3.  **夹逼定理 (Teorema dei Due Carabinieri / Teorema del Confronto):**
-    
-    设在 $x_0$ 的某个去心邻域内，始终有 $h(x) \le f(x) \le g(x)$。
-    
-    如果 $\lim_{x \to x_0} h(x) = L$ 且 $\lim_{x \to x_0} g(x) = L$，那么 $\lim_{x \to x_0} f(x) = L$。
-    
-
-### 通俗解释 (Spiegazione Intuitiva)
-
-这三个定理是我们做复杂计算时的“免死金牌”。
-
--   **唯一性：** 一个人不可能在同一时刻既在北京又在罗马。极限是一个确定的目标，如果存在，必然唯一。
-    
--   **保号性：** 如果你最终到达的目的地是在赤道以北（大于0），那么在你即将到达终点的那一小段路上，你一定也已经在北半球了。
-    
--   **夹逼定理：** 这个在意大利语里叫“两个警察定理”（Due Carabinieri）。想象你是一个嫌疑犯 $f(x)$，你的左边和右边各有一个警察（$h(x)$ 和 $g(x)$）死死夹住你。如果这两个警察都在往警察局大门（目标 $L$）走，那么就算你不愿意，你也绝对会被“夹”进警察局。
-    
----
-    
 ## 1.7 连续性 (Continuità)
 
 ### 严谨数学定义 (Definizione Rigorosa)
@@ -463,76 +1195,6 @@ _(注意：这里取消了极限定义中 $0 < |x - x_0|$ 的限制，允许 $x 
 2.  **指数/对数重要极限 (欧拉数 $e$ 的定义衍生):**
     
     $$\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e \quad \text{或者} \quad \lim_{x \to 0} \frac{\ln(1+x)}{x} = 1$$
-
----
-
-## 1.4 极限的核心定理 (Teoremi Fondamentali sui Limiti)
-
-经历了上一节 $\varepsilon-\delta$ 证明的痛苦后，你可能会想：难道以后算任何极限，都要这么从头推导一次误差界限吗？当然不是。数学家们早就用 $\varepsilon-\delta$ 证明了一系列强大的通用定理。在编程里，这就叫**接口封装 (Encapsulation)**：底层的代码已经写好了，以后遇到复杂的系统，直接调用定理即可。
-
-### 1.4.1 唯一性定理 (Teorema di Unicità del Limite)
-
-**严格数学定义：**
-
-设 $f(x)$ 满足在聚点 $x_0$ 处存在极限。如果 $\lim_{x \to x_0} f(x) = L_1$，且 $\lim_{x \to x_0} f(x) = L_2$，那么必定有 $L_1 = L_2$。
-
-**给父母的通俗解释：**
-
-想象一个人沿着一条唯一的马路一直往前走。如果到了终点，有人说他到了北京，又有人说他到了罗马，那只有一种可能——他在两个平行的宇宙里。在我们的现实数学宇宙里，一个确定的运动趋势，只能指向**唯一**的一个目的地。
-
-**严格形式化证明 (反证法)：**
-
-假设存在两个不同的极限 $L_1 \neq L_2$，且不妨设 $L_1 < L_2$。
-
-我们取一个极小的误差值 $\varepsilon = \frac{L_2 - L_1}{2} > 0$。
-
-根据极限定义，存在 $\delta_1 > 0$ 和 $\delta_2 > 0$，使得在 $0 < |x - x_0| < \delta = \min(\delta_1, \delta_2)$ 时，同时满足：
-
-$$L_1 - \varepsilon < f(x) < L_1 + \varepsilon$$
-
-$$L_2 - \varepsilon < f(x) < L_2 + \varepsilon$$
-
-我们将 $\varepsilon$ 代入，会发现 $L_1 + \varepsilon = L_1 + \frac{L_2 - L_1}{2} = \frac{L_1 + L_2}{2}$。
-
-同时 $L_2 - \varepsilon = \frac{L_1 + L_2}{2}$。
-
-这要求 $f(x) < \frac{L_1 + L_2}{2}$ 且 $f(x) > \frac{L_1 + L_2}{2}$，产生逻辑矛盾！因此假设不成立，极限必须唯一。
-
-### 1.4.2 保号性定理 (Teorema della Permanenza del Segno)
-
-**严格数学定义：**
-
-如果 $\lim_{x \to x_0} f(x) = L$，且 $L > 0$（或 $L < 0$），那么必定存在一个 $x_0$ 的去心邻域，使得在这个邻域内的所有 $x$，都有 $f(x) > 0$（或 $f(x) < 0$）。
-
-**给父母的通俗解释：**
-
-如果一列火车的终点站是炎热的热带（极限值 $L > 0$），那么在它即将到达终点站的前几站（去心邻域），窗外的气温肯定已经高于零度了。
-
-### 1.4.3 夹逼定理 (Teorema dei Due Carabinieri / del Confronto)
-
-**严格数学定义：**
-
-设在 $x_0$ 的某个去心邻域内，始终有 $h(x) \le f(x) \le g(x)$ 成立。
-
-如果 $\lim_{x \to x_0} h(x) = L$，且 $\lim_{x \to x_0} g(x) = L$，那么必定有 $\lim_{x \to x_0} f(x) = L$。
-
-**给父母的通俗解释：**
-
-这是意大利学生最喜欢的一个定理，被称为“两个警察定理（Due Carabinieri）”。想象嫌疑人 $f(x)$ 被两个警察 $h(x)$ 和 $g(x)$ 一左一右夹在中间。如果这两个警察最终都走进了警察局（极限都是 $L$），那么中间那个无论怎么挣扎，最终必定也被押进同一个警察局。
-
-**严格形式化证明：**
-
-已知任意 $\varepsilon > 0$，存在 $\delta_1, \delta_2 > 0$，使得：
-
-当 $0 < |x - x_0| < \delta_1$ 时，$L - \varepsilon < h(x) < L + \varepsilon$；
-
-当 $0 < |x - x_0| < \delta_2$ 时，$L - \varepsilon < g(x) < L + \varepsilon$。
-
-取 $\delta = \min(\delta_1, \delta_2)$，此时不等式 $h(x) \le f(x) \le g(x)$ 也成立。我们把它们拼起来：
-
-$$L - \varepsilon < h(x) \le f(x) \le g(x) < L + \varepsilon$$
-
-忽略首尾的警察，只看中间：$L - \varepsilon < f(x) < L + \varepsilon$，即 $|f(x) - L| < \varepsilon$。根据定义，$\lim f(x) = L$ 得证。
 
 ---
 
@@ -761,7 +1423,6 @@ $$
 
 如果能够正向推出结论，那么根据极限的定义，得证。
 
-
 ---
 
 # Intuition (Why is it needed?)
@@ -785,52 +1446,44 @@ How to use definition to proof limits?
 #### 1. 识别固定数据
 
 基本正确。还应补充前提：
-
-\[\
-x\_0\in\operatorname{Acc}(A).\
-]
-
+$$
+x_0\in\operatorname{Acc}(A)
+$$
 预先固定的是：
-
-\[\
-f,\quad A,\quad x\_0,\quad \ell.\
-]
-
-其中 (\ell) 是题目要求我们验证的候选极限值，不是已经证明的极限。
+$$
+f,\quad A,\quad x_0,\quad \ell
+$$
+其中 $\ell$ 是题目要求我们验证的候选极限值，不是已经证明的极限。
 
 #### 2. 任取 (\varepsilon>0)
 
 正确。必须明确：
-
-\[\
-\text{Sia }\varepsilon>0\text{ arbitrario}.\
-]
-
+$$
+\text{Sia }\varepsilon>0\text{ arbitrario}
+$$
 然后研究目标误差：
-
-\[\
-|f(x)-\ell|.\
-]
+$$
+|f(x)-\ell|
+$$
 
 #### 3. 逆向分析目标
 
 你的思想正确，但表述需要改成：
 
-> 对 (|f(x)-\ell|) 进行代数变形或估计，寻找一个关于 (|x-x\_0|) 的**充分条件**，使目标不等式成立。
+> 对 $|f(x)-\ell|$ 进行代数变形或估计，寻找一个关于 $|x-x_0|$ 的**充分条件**，使目标不等式成立。
 
 这不一定只能写在草稿纸上。只要使用条件性语言，完全可以严谨地写在答卷上：
 
-> Per ottenere\
-> \[\
-> |f(x)-\ell|<\varepsilon,\
-> ]\
-> è sufficiente richiedere che…
+Per ottenere
+$$
+|f(x)-\ell|<\varepsilon
+$$
+è sufficiente richiedere che…
 
 不能写成无条件事实：
-
-\[\
-|f(x)-\ell|<\varepsilon,\
-]
+$$
+|f(x)-\ell|<\varepsilon
+$$
 
 但可以把它明确标记为**目标**。
 
@@ -845,75 +1498,65 @@ f,\quad A,\quad x\_0,\quad \ell.\
 #### 4. 区分发现过程和正式验证
 
 你写的第 4 步目前不完整。不是简单写：
-
-\[\
-\Longrightarrow |f(x)-\ell|<\varepsilon.\
-]
-
+$$
+\Longrightarrow |f(x)-\ell|<\varepsilon
+$$
 而应当先完成构造，再重新从定义的左侧开始：
+$$
+0<|x-x_0|<\delta
+\Longrightarrow
+|f(x)-\ell|<\varepsilon
+$$
 
-\[\
-0<|x-x\_0|<\delta\
-\Longrightarrow\
-|f(x)-\ell|<\varepsilon.\
-]
-
-#### 5. 选择 (\delta)
+#### 5. 选择 $\delta$
 
 正确，但需补充：
+$$
+\delta=\delta(\varepsilon)>0
+$$
 
-\[\
-\delta=\delta(\varepsilon)>0.\
-]
+$\delta$ 可以依赖：
 
-(\delta) 可以依赖：
+* $\varepsilon$；
 
-* (\varepsilon)；
-
-* 已经固定的 (f,A,x\_0,\ell)；
+* 已经固定的 $f,A,x_0,\ell$；
 
 * 证明中预先选定的常数。
 
-但不能依赖随后任取的 (x)。
+但不能依赖随后任取的 $x$
 
 有多个限制时，通常使用：
+$$
+\delta=\min{\delta_1,\delta_2,\ldots}
+$$
 
-\[\
-\delta=\min{\delta\_1,\delta\_2,\ldots}.\
-]
+#### 6. 任取满足条件的 $x$
 
-#### 6. 任取满足条件的 (x)
+“代入 $0<|x-x_0|<\delta$”不够准确。应该写：
 
-“代入 (0<|x-x\_0|<\delta)”不够准确。应该写：
-
-> 在选择 (\delta) 之后，任取 (x\in A)，并假设\
-> \[\
-> 0<|x-x\_0|<\delta.\
-> ]
+> 在选择 $\delta$ 之后，任取 $x\in A$，并假设
+> 
+> $0<|x-x_0|<\delta$
+> 
 
 即：
-
-\[\
-\forall x\in A\
-]
-
+$$
+\forall x\in A
+$$
 并不是说任意实数都满足这个距离条件，而是说：
-
-\[\
-\text{对所有满足该条件的 }x\in A\
-]
-
-都要证明输出误差小于 (\varepsilon)。
+$$
+\text{对所有满足该条件的 }x\in A
+$$
+都要证明输出误差小于 $\varepsilon$
 
 #### 7. 正向推出目标
 
 正确：
-
-\[\
-0<|x-x\_0|<\delta\
-\Longrightarrow\
-|f(x)-\ell|<\varepsilon.\
-]
+$$
+0<|x-x_0|<\delta
+\Longrightarrow
+|f(x)-\ell|<\varepsilon
+$$
 
 每一步不等式都应注明依据：
 
@@ -921,17 +1564,16 @@ f,\quad A,\quad x\_0,\quad \ell.\
 
 * 使用了哪个局部估计；
 
-* 使用了 (|x-x\_0|<\delta)；
+* 使用了 $|x-x_0|<\delta$；
 
-* 使用了 (\delta) 的具体选择。
+* 使用了 $\delta$ 的具体选择。
 
 #### 8. 调用定义
 
 正确。量词要求全部满足以后，才能写：
-
-\[\
-\lim\_{x\to x\_0}f(x)=\ell.\
-]
+$$
+\lim_{x\to x_0}f(x)=\ell
+$$
 
 ***
 
@@ -961,7 +1603,7 @@ f,\quad A,\quad x\_0,\quad \ell.\
 
 ***
 
-# 二、复习任务进度核对
+## 二、复习任务进度核对
 
 ## `02-intorno` 的通过条件
 
@@ -1033,123 +1675,136 @@ f,\quad A,\quad x\_0,\quad \ell.\
 
 * 当前继续 limits，不回到邻域反复训练，也不提前跳到连续性。
 
-***
-
-# 三、教授讲义中的练习是否足够
-
-## 1. 代表性
-
-教授自己的教材和讲义具有很高的**教学代表性**，因为它们反映：
-
-* 定义和记号；
-
-* 定理顺序；
-
-* 教授期望掌握的前置关系；
-
-* 从基础例题到章节练习的递进方式。
-
-课程日志显示，在讲授聚点与有限极限后，教授立即布置了 Esercizio 3.1–3.2，说明这些题主要承担“定义入口训练”的作用。
-
-教材第 3 章的练习从聚点、定义验证，逐步覆盖基本极限、变量替换、运算法则、比较定理、不存在性和数列等内容，范围是比较完整的。
-
-## 2. 数量是否足够
-
-需要区分两个目标。
-
-### 对理解课程结构：基本足够
-
-教授教材足以帮助你：
-
-* 学习正式定义；
-
-* 理解定理用途；
-
-* 完成每类题的初次训练；
-
-* 保持与课程记号一致。
-
-### 对考试熟练度：单独使用不够
-
-例如，教材 Esercizio 3.2 中直接使用定义验证极限的题只有两个基础模型：
-
-\[\
-\lim\_{x\to-1}(9-2x)=11,\
-\qquad\
-\lim\_{x\to2}(x^2+4)=8.\
-]
-
-它们足以介绍构造方法，但不足以让你仅靠这两题稳定掌握所有 (\varepsilon)-(\delta) 构造。
-
-另一方面，正式试卷中的极限通常表现为计算题、含参数题或与 Taylor、连续性、反常积分相连的题，而不是大量要求从定义证明简单极限。
-
-因此资源优先级应当是：
-
-\[\
-\boxed{\
-\text{本教授教材}\
-\rightarrow\
-\text{本教授正式试卷}\
-\rightarrow\
-\text{其他教授的补充题}\
-}\
-]
-
-
-当前的下一题就是 Malusa 教材 Esercizio 3.2 的第二个模型，正好训练你刚刚讨论的构造问题：
-
-\[\
-\boxed{\lim\_{x\to2}(x^2+4)=8}.\
-]
-
-请分成两部分提交：
-
-### Ricerca di (\delta)
-
-从
-
-\[\
-|(x^2+4)-8|=|x-2||x+2|\
-]
-
-开始，回答：
-
-1. 哪个因子已经是我们想控制的距离？
-
-2. 哪个因子目前无法直接控制？
-
-3. 怎样通过先要求 (|x-2|<1) 来控制该因子？
-
-4. 最终应当选择怎样的 (\delta)？
-
-### Verifica
-
-重新从
-
-\[\
-0<|x-2|<\delta\
-]
-
-出发，写出完整的正向意大利语证明。
-
 ---
 
 # Connections (How does it connect with other concepts?)
 
 ## 各种极限之间的对比
 
-| 输入            | 输出               | 定义骨架                                           |
-| ------------- | ---------------- | ---------------------------------------------- |
-| $x\to x_0$    | $f(x)\to\ell$    | $\forall\varepsilon\ \exists\delta\ \forall x$ |
-| $x\to+\infty$ | $f(x)\to\ell$    | $\forall\varepsilon\ \exists K\ \forall x$     |
-| $x\to x_0$    | $f(x)\to+\infty$ | $\forall M\ \exists\delta\ \forall x$          |
-| $x\to+\infty$ | $f(x)\to+\infty$ | $\forall M\ \exists K\ \forall x$              |
-
 ---
 
 # Exercises (Have I genuinely learnt how to apply it?)
 
-- classic ex
+## classic ex
+
+对上一题的回顾：
+虽然上一题我独立做出来了，且你判断我的证明正确。但是，我不能仅仅追求结果，当我再次回顾上一题的时候，我发现如果没有你的提示告诉我要控制 $|x|<1 \implies x<1$ ，我就很难理清思路。那么，假设在你没有给我任何提示的情况下，我该如何思考才能达到“想到要控制 $|x|<1 \implies x<1$”这一条件呢？在没有你给出的提示下，我只能这样在草稿纸（注意是在草稿纸上的假设逆推、寻找特定值的阶段，不是正式的证明）上推断，以下是我的草稿思路：
+$$
+x-\frac{1}{x^2}<-M \implies
+M>x+\frac{1}{x^2}
+$$
+无法用 $M$ 来表示 $x$ ，也就是说无法像 $2x+1>M$ 那样简单直接地获得一个解。
+
+所以，这个时候我会开始观察 $0<|x-x_0|<\delta \implies 0<|x-0|<\delta \implies 0<|x|<\delta$
+
+紧接着可以继续得到 $0<x^2<\delta^2 \implies -\frac{1}{x^2}<-\frac{1}{\delta^2}<0$
+
+这个时候我会把两个不等式相加得到 $x-\frac{1}{x^2}<\delta-\frac{1}{\delta^2}<0$
+
+于是我会进一步推断 $\delta-\frac{1}{\delta^2} \le -M <0$
+
+尝试利用 $\delta-\frac{1}{\delta^2}=-M \implies \delta=-M+\frac{1}{\delta^2}$
+
+但是这样还是不行，因为无法得出一个 $\delta(M)$  表达式，$\delta=-M+\frac{1}{\delta^2}$ 里面还混杂着 $M$ 和 $\delta$ 
+
+如果没有你的提示，那么我在草稿纸上的思路到这里就断开了。
+
+所以我觉得，这是我的思维困境，是不是我的思路本身就错了？从这一步继续根本就无法推断出正确答案？要么是我从这一步开始就不知道该如何往后思考了，要么就是我一开始就错了。
+
+---
+
+以下是记录了思路的草稿阶段和按标准书写的证明阶段：
+
+先回答1~4这几个问题：
+1. 容易得知 $-\frac{2}{x^2}$ 是主导项，因为当 $x\to 0$ 时，分母会变得很小而分子不变，$(\frac{2}{x^2})$分数数值变大再乘以负号，是一个负数；而附加项 $x^3$ 的影响很小，因为当 $x\to 0$ 时，$x^3$ 会变得非常微小。
+2. 我给附加项 $x^3$ 设定固定上界为常数8
+3. 主导项因此必须低于 $-(M+8)$
+4. 最终选择的 $\delta=\operatorname{min}\left\{2, \sqrt\frac{2}{M+8}\right\} >0$
+
+草稿阶段 Ricerca:
+
+由于你在上文的对话中帮助我知道了如何顺着自己的思路使用构造法，我突然发现面对
+$$
+x^3-\frac{2}{x^2}<-M 
+$$
+实际上可以直接跳过观察 $0<|x-x_0|<\delta \implies 0<|x-0|<\delta \implies 0<|x|<\delta$ 的阶段。当然我在草稿纸上仍然对这个过程进行了演算，注意到因为有一个立方项 $x^3$ 和一个分子不为1的分母平方 $-\frac{2}{x^2}$ 项，所以导致试图使用 $0<|x-x_0|<\delta \implies 0<|x-0|<\delta \implies 0<|x|<\delta$ 构造出两个次数不同的项变得十分困难。
+
+例如，如果我继续之前那道题那样
+
+$$
+x^3-\frac{2}{x^2}<-M \implies
+M<-x^3+\frac{2}{x^2}
+$$
+无法用 $M$ 来表示 $x$
+
+观察 $0<|x-x_0|<\delta \implies 0<|x-0|<\delta \implies 0<x^2<\delta^2$ 得到 $-\frac{1}{x^2}<-\frac{1}{\delta^2}<0 \implies -\frac{2}{x^2}<-\frac{2}{\delta^2}<0$
+
+然后试图构造一个 $x^3$ , 发现使用 $0<|x-x_0|<\delta \implies 0<|x-0|<\delta \implies 0<x^2<\delta^2$ 无法构造出 $0<x^3<\delta^3$
+
+此时总而言之，无法使用输入距离来构造 $\delta(M)$ . 
+
+看似两边都无法构造，此时我重新回过头来看 $x^3-\frac{2}{x^2}<-M$
+
+我注意到一件事
+$$
+x^3-\frac{2}{x^2}<8-(M+8)
+$$
+因此发现了可以使用构造法的条件
+$$
+x^3 \le 8\quad, \quad
+-\frac{2}{x^2} \le -(M+8)
+$$
+解这个不等式组
+$$
+\begin{cases}
+x^3 \le 8 \\
+\\
+-\frac{2}{x^2} \le -(M+8)
+\end{cases}
+$$
+可得
+$$
+\begin{cases}
+x \le 2\\
+\\
+|x| \le \sqrt\frac{2}{M+8}
+\end{cases}
+$$
+于是可以令 $\delta=\operatorname{min}\left\{2, \sqrt\frac{2}{M+8}\right\}$
+
+草稿阶段结束。
+
+证明阶段 Verificare：
+
+Sia $M>0$ arbitrario e scegliamo
+$$
+\delta=\operatorname{min}\left\{2, \sqrt\frac{2}{M+8}\right\} >0
+$$
+Sia $x\in \mathbb{R}\setminus\{0\}$ tale che $0<|x-0|<\delta$, allora
+$$
+0<|x|<\delta=\operatorname{min}\left\{2, \sqrt\frac{2}{M+8}\right\}
+$$
+quindi
+$$
+|x|<\sqrt\frac{2}{M+8} \implies
+x^2<\frac{2}{M+8} \implies
+-\frac{2}{x^2} < -(M+8)
+$$
+inoltre, poichè $\delta=\operatorname{min}\left\{2, \sqrt\frac{2}{M+8}\right\}$ si ottiene
+$$
+|x|<2 \implies
+|x^3|=|x|^3 < 8 \implies
+x^3 < 8 \quad
+$$
+quindi
+$$
+x^3-\frac{2}{x^2} < 8-(M+8) \implies x^3-\frac{2}{x^2} < -M
+$$
+Pertanto, per definizione,
+$$
+\lim_{x\to 0}\left(x^3-\frac{2}{x^2}\right)=-\infty
+$$
+
 
 ## mistake ex
 
@@ -1161,7 +1816,7 @@ La mia risposta:
 
 Abbiamo bisogno della condizione $\delta\leq1$ per controllare il fattore $|x+2|$. Infatti, se $|x-2|<\delta\leq1$, allora
 $$
-|x+2|=|(x-2)+4|\leq|x-2|+4<5.
+|x+2|=|(x-2)+4|\leq|x-2|+4<5
 $$
 Pertanto il fattore $|x+2|$ è limitato superiormente da una costante indipendente da $x$.
 
@@ -1180,19 +1835,19 @@ $$
 |x-2||x+2|
 <
 \frac{\varepsilon}{5}\cdot5
-\varepsilon.
+\varepsilon
 $$
 
 Sia $\varepsilon>0$ arbitrario e poniamo
 
 $$
-\delta=\min\left\{2,\frac{\varepsilon}{6}\right\}>0.
+\delta=\min\left\{2,\frac{\varepsilon}{6}\right\}>0
 $$
 
 Sia $x\in\mathbb R$ tale che
 
 $$
-0<|x-2|<\delta.
+0<|x-2|<\delta
 $$
 
 Poiché $\delta\leq2$, si ha
@@ -1204,13 +1859,13 @@ $$
 \leq
 |x-2|+4
 <
-6.
+6
 $$
 
 Inoltre, poiché $\delta\leq\frac{\varepsilon}{6}$, si ha
 
 $$
-|x-2|<\frac{\varepsilon}{6}.
+|x-2|<\frac{\varepsilon}{6}
 $$
 
 Pertanto,
@@ -1218,17 +1873,17 @@ Pertanto,
 $$
 \begin{aligned}
 |(x^2+4)-8|
-&=|x^2-4|\\
-&=|x-2||x+2|\\
-&<\frac{\varepsilon}{6}\cdot6\\
-&=\varepsilon.
+&=|x^2-4| \\
+&=|x-2||x+2| \\
+&<\frac{\varepsilon}{6}\cdot6 \\
+&=\varepsilon
 \end{aligned}
 $$
 
 Quindi, per definizione,
 
 $$
-\lim_{x\to2}(x^2+4)=8.
+\lim_{x\to2}(x^2+4)=8
 $$
 
 
